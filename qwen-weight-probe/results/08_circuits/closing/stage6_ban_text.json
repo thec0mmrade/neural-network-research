@@ -1,0 +1,32 @@
+{
+ "ban": {
+  "n": 192,
+  "wrap": 311,
+  "eos": 0,
+  "looping": 19,
+  "answer_boxed": 29,
+  "answer_boxed_per_seed": [
+   9,
+   10,
+   10
+  ],
+  "first_answer_median_tok": 4061,
+  "first_answer_correct": 29,
+  "modal_answer_correct": 29
+ },
+ "dperp_plus__ban": {
+  "n": 192,
+  "wrap": 7637,
+  "eos": 10,
+  "looping": 179,
+  "answer_boxed": 177,
+  "answer_boxed_per_seed": [
+   61,
+   58,
+   58
+  ],
+  "first_answer_median_tok": 2563,
+  "first_answer_correct": 107,
+  "modal_answer_correct": 108
+ }
+}

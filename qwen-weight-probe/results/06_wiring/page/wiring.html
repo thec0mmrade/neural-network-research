@@ -1,0 +1,445 @@
+<title>Qwen3.5-0.8B Wiring Map</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: an instrument bench. Header strip, then a view pane (tabs: heatmap / neighborhood / map) beside a lookup panel; stacks on phones. */
+:root {
+  --bg: #eef1f4; --surface: #ffffff; --sunk: #e3e8ee; --ink: #16202b; --muted: #5a6676; --line: #d3dae3;
+  --accent: #1d5bbf; --accent-soft: #dbe6f8; --pos: #1d7a58; --neg: #b3432b; --zero: #8792a2; --edited: #c27c0e;
+  --font-display: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --step--1: 0.8125rem; --step-0: 0.9375rem; --step-1: 1.125rem; --step-2: 1.5rem;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0e131a; --surface: #151c25; --sunk: #1b2430; --ink: #e3e9f0; --muted: #94a1b2; --line: #2a3542;
+  --accent: #6ea4ff; --accent-soft: #1d2d47; --pos: #4cc49c; --neg: #f0805f; --zero: #6f7b8c; --edited: #f0b44a; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0e131a; --surface: #151c25; --sunk: #1b2430; --ink: #e3e9f0; --muted: #94a1b2; --line: #2a3542;
+  --accent: #6ea4ff; --accent-soft: #1d2d47; --pos: #4cc49c; --neg: #f0805f; --zero: #6f7b8c; --edited: #f0b44a; color-scheme: dark }
+
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--ink); font: var(--step-0)/1.5 var(--font-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 20px 32px }
+.wrap { max-width: 1320px; margin: 0 auto; display: grid; gap: 16px }
+header { display: grid; gap: 6px }
+h1 { font: 600 var(--step-2)/1.15 var(--font-display); letter-spacing: 0.01em; margin: 0; text-wrap: balance }
+.sub { color: var(--muted); max-width: 72ch; margin: 0 }
+.flag { display: inline-flex; gap: 8px; align-items: center; font: 500 var(--step--1)/1.3 var(--font-mono); color: var(--accent);
+  background: var(--accent-soft); border-radius: 4px; padding: 4px 8px; width: fit-content }
+.bench { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 16px; align-items: start }
+@media (max-width: 960px) { .bench { grid-template-columns: minmax(0, 1fr) } }
+.pane { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; min-width: 0 }
+.tabs { display: flex; flex-wrap: wrap; gap: 4px; padding: 8px; border-bottom: 1px solid var(--line) }
+.tab { font: 500 var(--step--1)/1 var(--font-body); color: var(--muted); background: none; border: 1px solid transparent;
+  padding: 8px 12px; border-radius: 4px; cursor: pointer }
+.tab[aria-selected="true"] { color: var(--ink); background: var(--sunk); border-color: var(--line) }
+.tab:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, .link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px }
+.view { padding: 12px 14px 16px; display: grid; gap: 10px; min-width: 0 }
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; font-size: var(--step--1); color: var(--muted) }
+.toolbar label { display: inline-flex; gap: 6px; align-items: center }
+select, input[type="search"] { font: var(--step--1) var(--font-mono); color: var(--ink); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 4px; padding: 6px 8px }
+button.btn { font: 500 var(--step--1)/1 var(--font-body); color: var(--ink); background: var(--sunk); border: 1px solid var(--line);
+  border-radius: 4px; padding: 7px 10px; cursor: pointer }
+button.btn:hover { border-color: var(--accent) }
+.note { font-size: var(--step--1); color: var(--muted); margin: 0; max-width: 80ch }
+.scroll { overflow-x: auto; min-width: 0 }
+svg text { fill: var(--muted); font: 11px var(--font-mono) }
+.cell { cursor: pointer } .cell:hover { stroke: var(--ink); stroke-width: 1.5 }
+.cell.on { stroke: var(--accent); stroke-width: 2 }
+#map { width: 100%; height: 560px; display: block; touch-action: none; cursor: grab; background: var(--bg); border-radius: 4px }
+#graph { display: block; width: 100%; min-width: 760px; height: auto }
+.node { cursor: pointer } .node:hover circle { stroke: var(--ink); stroke-width: 2 }
+.list { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; font: var(--step--1)/1.35 var(--font-mono) }
+.list li { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 8px; align-items: center; padding: 3px 6px; border-radius: 3px }
+.list li:hover { background: var(--sunk) }
+.link { color: var(--accent); background: none; border: 0; padding: 0; font: inherit; cursor: pointer; text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.num { font-variant-numeric: tabular-nums; color: var(--muted) }
+.chip { font: 500 10px/1 var(--font-mono); padding: 3px 5px; border-radius: 3px; border: 1px solid currentColor }
+.chip.pos { color: var(--pos) } .chip.neg { color: var(--neg) } .chip.zero { color: var(--zero) } .chip.ed { color: var(--edited) }
+aside.pane { padding: 14px; display: grid; gap: 12px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px) }
+@media (max-width: 960px) { aside.pane { position: static } }
+.panel-h { font: 600 var(--step-1)/1.2 var(--font-display); margin: 0; word-break: break-all }
+.kv { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 12px; font-size: var(--step--1); margin: 0 }
+.kv dt { color: var(--muted) } .kv dd { margin: 0; font-family: var(--font-mono); font-variant-numeric: tabular-nums }
+.toks { display: flex; flex-wrap: wrap; gap: 4px; font: var(--step--1)/1.2 var(--font-mono) }
+.tok { background: var(--sunk); border: 1px solid var(--line); border-radius: 3px; padding: 2px 5px; white-space: pre }
+.label { font: 500 11px/1.2 var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0 }
+.row { display: flex; gap: 8px; flex-wrap: wrap }
+.legend { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; font: var(--step--1) var(--font-mono); color: var(--muted) }
+.ramp { width: 140px; height: 8px; border-radius: 2px; border: 1px solid var(--line) }
+.sw { display: inline-block; width: 18px; height: 3px; vertical-align: middle; margin-right: 4px }
+#status { font: var(--step--1) var(--font-mono); color: var(--muted) }
+@media (prefers-reduced-motion: no-preference) { .tab, .link, button.btn { transition: background .15s, border-color .15s } }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Qwen3.5-0.8B Wiring Map</h1>
+    <p class="sub">How every MLP neuron and attention head in Qwen3.5-0.8B connects to the others through the residual stream, worked out from the weights alone. 86,352 components across 24 layers. Start from the loop direction <b>u</b> behind the Sparks Exp 8 edit, or search for any component.</p>
+    <span class="flag">Static wiring from weights · not a trace of any input</span>
+  </header>
+
+  <div class="bench">
+    <section class="pane" aria-label="Views">
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" id="tab-graph" aria-selected="true" data-view="graph">Neighborhood</button>
+        <button class="tab" role="tab" id="tab-heat" aria-selected="false" data-view="heat">Layer heatmap</button>
+        <button class="tab" role="tab" id="tab-map" aria-selected="false" data-view="map">Embedding map</button>
+      </div>
+
+      <div class="view" id="view-graph">
+        <div class="toolbar">
+          <span id="graph-title">Centered on u15</span>
+          <button class="btn" id="graph-u">Center on u15</button>
+          <span class="legend"><span><i class="sw" style="background:var(--pos)"></i>same sign</span><span><i class="sw" style="background:var(--neg)"></i>opposite sign</span><span><i class="sw" style="background:var(--zero)"></i>head (unsigned)</span><span><i class="sw" style="background:var(--edited)"></i>edited by Sparks</span></span>
+        </div>
+        <div class="scroll"><svg id="graph" viewBox="0 0 1000 560" role="img" aria-label="Neighborhood graph"></svg></div>
+        <p class="note">Columns are layers 0–23, left to right. A node's strongest inputs are on its left and its strongest outputs on its right (up to 8 each), with the next hop beyond them. Line width shows edge score. Click any node to inspect it and re-center the graph.</p>
+      </div>
+
+      <div class="view" id="view-heat" hidden>
+        <div class="toolbar">
+          <label for="heat-kind">Edges</label>
+          <select id="heat-kind">
+            <option value="all">all types</option>
+            <option value="n->n">neuron → neuron</option>
+            <option value="n->h">neuron → head</option>
+            <option value="h->n">head → neuron</option>
+            <option value="h->h">head → head</option>
+          </select>
+          <span class="legend"><span>chance</span><canvas class="ramp" id="ramp" width="140" height="8"></canvas><span id="ramp-max">max</span></span>
+        </div>
+        <div class="scroll"><svg id="heat" viewBox="0 0 560 560" style="max-width:560px;width:100%" role="img" aria-label="Layer to layer wiring heatmap"></svg></div>
+        <p class="note" id="heat-note">Each cell is the share of possible edges from a source layer (row) to a target layer (column) that score above the noise floor, compared with the 0.1% expected by chance. Full-attention layers are marked ▪. Click a cell to list its strongest edges.</p>
+        <ul class="list" id="heat-edges"></ul>
+      </div>
+
+      <div class="view" id="view-map" hidden>
+        <div class="toolbar">
+          <button class="btn" id="zin" aria-label="Zoom in">+</button>
+          <button class="btn" id="zout" aria-label="Zoom out">−</button>
+          <button class="btn" id="zreset">Reset</button>
+          <label><input type="checkbox" id="show-ed" checked> show edited neurons</label>
+          <span class="legend"><span>layer 0</span><canvas class="ramp" id="lramp" width="140" height="8"></canvas><span>23</span></span>
+        </div>
+        <canvas id="map" aria-label="Embedding map of all components"></canvas>
+        <p class="note">Each point is one component, placed by the direction it writes into the residual stream (UMAP of the write directions). Similar writers sit close together, and 2D distances are only approximate. Labels mark the 150 k-means clusters, showing each one's main layers and the tokens its average direction promotes. Drag to pan, scroll or use the buttons to zoom, and click a point to inspect it.</p>
+      </div>
+    </section>
+
+    <aside class="pane" aria-label="Lookup">
+      <div class="row">
+        <input type="search" id="q" placeholder="L17.mlp.20 · L15.attn.h7 · L3.lin.h2" aria-label="Find a component" style="flex:1;min-width:0">
+        <button class="btn" id="go">Find</button>
+      </div>
+      <div id="status">Loading wiring data…</div>
+      <div id="panel"></div>
+      <p class="note">Edge score = 1024·‖R·W‖² for reader R and writer W; a random direction scores 1. Noise floors (99.9th percentile against rotated reads): <span id="floors"></span>. Vocabulary readouts (logit lens) mean most in late layers. Early-layer readouts are often noise.</p>
+    </aside>
+  </div>
+</div>
+
+<script>
+const S = { meta: null, layers: {}, sel: null, center: "u15", heatSel: null };
+const $ = (id) => document.getElementById(id);
+const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+
+// ---- layer color scale (sequential, works on both themes)
+const STOPS = [[44, 62, 158], [42, 161, 152], [224, 165, 38]];
+function layerColor(l, a = 1) {
+  const t = l / 23, s = t < 0.5 ? 0 : 1, f = t < 0.5 ? t * 2 : (t - 0.5) * 2;
+  const c = STOPS[s].map((v, i) => Math.round(v + (STOPS[s + 1][i] - v) * f));
+  return `rgba(${c[0]},${c[1]},${c[2]},${a})`;
+}
+
+// ---- component addressing
+function info(id) {
+  const m = S.meta; let l = 0;
+  while (l < 23 && m.offsets[l + 1] <= id) l++;
+  const local = id - m.offsets[l], nh = m.nheads[l], full = m.full_attn.includes(l);
+  const kind = local < nh ? (full ? "attn" : "lin") : "mlp", idx = local < nh ? local : local - nh;
+  return { id, l, local, kind, idx, name: kind === "mlp" ? `L${l}.mlp.${idx}` : `L${l}.${kind}.h${idx}` };
+}
+function parseName(s) {
+  const m = /^\s*l?(\d+)\.(mlp|attn|lin)\.h?(\d+)\s*$/i.exec(s || "");
+  if (!m) return null;
+  const l = +m[1], kind = m[2].toLowerCase(), i = +m[3];
+  if (l > 23) return null;
+  const nh = S.meta.nheads[l], full = S.meta.full_attn.includes(l);
+  if (kind === "mlp") return i < 3584 ? S.meta.offsets[l] + nh + i : null;
+  if ((kind === "attn") !== full || i >= nh) return null;
+  return S.meta.offsets[l] + i;
+}
+function layerData(l) {
+  if (!S.layers[l]) S.layers[l] = fetch(`data/L${String(l).padStart(2, "0")}.json`).then((r) => {
+    if (!r.ok) throw new Error(`layer ${l} data: HTTP ${r.status}`); return r.json(); });
+  return S.layers[l];
+}
+async function comp(id) {
+  const I = info(id), row = (await layerData(I.l))[I.local];
+  return { ...I, plus: row[0], minus: row[1], out: row[2], in: row[3], ucos: row[4] };
+}
+const isEdited = (id) => S.editedSet.has(id);
+const signClass = (g) => (g > 0 ? "pos" : g < 0 ? "neg" : "zero");
+
+// ---- lookup panel
+function tokList(arr) { return `<div class="toks">${arr.map((t) => `<span class="tok">${esc(t)}</span>`).join("")}</div>`; }
+function esc(s) { return String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]); }
+function edgeList(edges, emptyText) {
+  if (!edges.length) return `<p class="note">${emptyText}</p>`;
+  return `<ul class="list">${edges.map(([j, s, g]) => {
+    const I = info(j);
+    return `<li><button class="link" data-id="${j}" title="Inspect ${I.name}">${I.name}${isEdited(j) ? " ★" : ""}</button><span class="num">${s}</span><span class="chip ${signClass(g)}">${g > 0 ? "+" : g < 0 ? "−" : "·"}</span></li>`;
+  }).join("")}</ul>`;
+}
+async function select(id, recenter = false) {
+  S.sel = id;
+  const c = await comp(id);
+  const kindName = { mlp: "MLP neuron", attn: "full-attention head", lin: "linear-attention head" }[c.kind];
+  const cl = S.meta.cluster[id];
+  $("panel").innerHTML = `
+    <div class="row" style="align-items:baseline;justify-content:space-between">
+      <h2 class="panel-h">${c.name}</h2>${isEdited(id) ? '<span class="chip ed">edited by Sparks p50c</span>' : ""}
+    </div>
+    <dl class="kv">
+      <dt>type</dt><dd>${kindName}, layer ${c.l}</dd>
+      <dt>cos with u15</dt><dd>${c.ucos > 0 ? "+" : ""}${c.ucos.toFixed(3)}${Math.abs(c.ucos) > 0.1 ? " (strong)" : ""}</dd>
+      <dt>map cluster</dt><dd>#${cl} (${S.meta.clusters[cl].n.toLocaleString()} components)</dd>
+    </dl>
+    <p class="label">Promotes when written</p>${tokList(c.plus)}
+    <p class="label">Suppresses</p>${tokList(c.minus)}
+    <p class="label">Strongest outputs (later readers)</p>${edgeList(c.out, "None. Layer 23's MLP is the last component before the output.")}
+    <p class="label">Strongest inputs (earlier writers)</p>${edgeList(c.in, "None. Layer 0's attention reads only the token embeddings.")}
+    <div class="row"><button class="btn" id="p-center">Center neighborhood here</button><button class="btn" id="p-locate">Locate on map</button></div>`;
+  $("p-center").onclick = () => { showView("graph"); drawGraph(id); };
+  $("p-locate").onclick = () => { showView("map"); focusMap(id); };
+  if (recenter) drawGraph(id);
+  drawMap();
+}
+document.addEventListener("click", (e) => {
+  const b = e.target.closest("[data-id]");
+  if (b) { const id = +b.dataset.id; select(id, document.querySelector("#view-graph:not([hidden])") != null); }
+});
+
+// ---- view A: heatmap
+function heatValues(kind) {
+  const n = 24, v = Array.from({ length: n }, () => new Array(n).fill(null));
+  const acc = {};
+  for (const c of S.meta.heat) {
+    if (kind !== "all" && c.kind !== kind) continue;
+    const k = c.src + "," + c.tgt; acc[k] = acc[k] || [0, 0]; acc[k][0] += c.n_above; acc[k][1] += c.n_pairs;
+  }
+  for (const k in acc) { const [s, t] = k.split(",").map(Number); v[s][t] = acc[k][0] / acc[k][1]; }
+  return v;
+}
+function heatColor(ratio, maxLog) {
+  const t = Math.max(0, Math.min(1, Math.log10(Math.max(ratio, 1)) / maxLog));
+  const a = css("--accent-soft"), b = css("--accent");
+  return mix(a, b, t);
+}
+function hexToRgb(h) { h = h.replace("#", ""); return [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16)); }
+function mix(a, b, t) { const A = hexToRgb(a), B = hexToRgb(b); return `rgb(${A.map((x, i) => Math.round(x + (B[i] - x) * t)).join(",")})`; }
+function drawHeat() {
+  const kind = $("heat-kind").value, v = heatValues(kind), svg = $("heat");
+  const pad = 40, cs = (560 - pad - 8) / 24;
+  let maxR = 1; v.forEach((r) => r.forEach((x) => { if (x != null) maxR = Math.max(maxR, x / 0.001); }));
+  const maxLog = Math.log10(maxR);
+  let h = "";
+  for (let i = 0; i < 24; i++) {
+    const full = S.meta.full_attn.includes(i);
+    h += `<text x="${pad - 6}" y="${pad + i * cs + cs * 0.7}" text-anchor="end">${i}${full ? "▪" : ""}</text>`;
+    h += `<text x="${pad + i * cs + cs / 2}" y="${pad - 8}" text-anchor="middle">${i}</text>`;
+  }
+  h += `<text x="${pad}" y="12">target layer →</text><text x="10" y="${pad + 40}" transform="rotate(-90 10 ${pad + 40})" text-anchor="end">source layer →</text>`;
+  for (let s = 0; s < 24; s++) for (let t = 0; t < 24; t++) {
+    const x = v[s][t]; if (x == null) continue;
+    const on = S.heatSel && S.heatSel[0] === s && S.heatSel[1] === t ? " on" : "";
+    h += `<rect class="cell${on}" data-s="${s}" data-t="${t}" x="${pad + t * cs}" y="${pad + s * cs}" width="${cs - 1}" height="${cs - 1}" fill="${heatColor(x / 0.001, maxLog)}"><title>L${s} → L${t}: ${(x * 100).toFixed(2)}% of pairs above floor (${(x / 0.001).toFixed(1)}× chance)</title></rect>`;
+  }
+  svg.innerHTML = h;
+  $("ramp-max").textContent = `${maxR.toFixed(0)}× chance`;
+  const rc = $("ramp").getContext("2d");
+  for (let i = 0; i < 140; i++) { rc.fillStyle = heatColor(Math.pow(10, (i / 139) * maxLog), maxLog); rc.fillRect(i, 0, 1, 8); }
+}
+$("heat").addEventListener("click", async (e) => {
+  const r = e.target.closest(".cell"); if (!r) return;
+  const s = +r.dataset.s, t = +r.dataset.t; S.heatSel = [s, t]; drawHeat();
+  $("heat-edges").innerHTML = `<li><span class="num">Loading L${s} → L${t}…</span></li>`;
+  const rows = await layerData(s), off = S.meta.offsets[s], found = [];
+  rows.forEach((row, local) => row[2].forEach(([j, sc, g]) => { if (info(j).l === t) found.push([off + local, j, sc, g]); }));
+  found.sort((a, b) => b[2] - a[2]);
+  $("heat-edges").innerHTML = found.length ? found.slice(0, 14).map(([a, b, sc, g]) =>
+    `<li><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><button class="link" data-id="${a}">${info(a).name}</button> → <button class="link" data-id="${b}">${info(b).name}</button></span><span class="num">${sc}</span><span class="chip ${signClass(g)}">${g > 0 ? "+" : g < 0 ? "−" : "·"}</span></li>`).join("")
+    : `<li><span class="num">No L${s} → L${t} edge made any component's top-8 list.</span></li>`;
+});
+$("heat-kind").addEventListener("change", drawHeat);
+
+// ---- view B: neighborhood graph
+async function neighborhood(center) {
+  const nodes = new Map(), edges = [];
+  const add = (id, hop) => { if (!nodes.has(id)) nodes.set(id, { id, hop }); };
+  if (center === "u15") {
+    const u = S.meta.uhood.u15;
+    nodes.set("u15", { id: "u15", hop: 0 });
+    u.writers.slice(0, 8).forEach((w) => { add(w.id, 1); edges.push([w.id, "u15", Math.round(w.score), w.sign]); });
+    u.readers.slice(0, 8).forEach((r) => { add(r.id, 1); edges.push(["u15", r.id, Math.round(r.score), r.sign]); });
+    return { nodes, edges };
+  }
+  const c = await comp(center); add(center, 0);
+  const ins = c.in.slice(0, 8), outs = c.out.slice(0, 8);
+  ins.forEach(([j, s, g]) => { add(j, 1); edges.push([j, center, s, g]); });
+  outs.forEach(([j, s, g]) => { add(j, 1); edges.push([center, j, s, g]); });
+  const hop2 = async (list, dir) => {
+    for (const [j] of list.slice(0, 5)) {
+      const cj = await comp(j);
+      (dir === "in" ? cj.in : cj.out).slice(0, 2).forEach(([k, s, g]) => {
+        add(k, 2); edges.push(dir === "in" ? [k, j, s, g] : [j, k, s, g]);
+      });
+    }
+  };
+  await Promise.all([hop2(ins, "in"), hop2(outs, "out")]);
+  return { nodes, edges };
+}
+async function drawGraph(center = S.center) {
+  S.center = center;
+  const svg = $("graph");
+  svg.innerHTML = `<text x="500" y="280" text-anchor="middle">Loading neighborhood…</text>`;
+  const { nodes, edges } = await neighborhood(center);
+  const W = 1000, H = 560, x0 = 50, x1 = W - 50, colX = (l) => x0 + (l / 23) * (x1 - x0);
+  const layerOf = (id) => (id === "u15" ? 15 : info(id).l);
+  const cols = {}; nodes.forEach((n) => { const l = layerOf(n.id); (cols[l] = cols[l] || []).push(n); });
+  for (const l in cols) {
+    const list = cols[l].sort((a, b) => a.hop - b.hop), m = list.length;
+    list.forEach((n, i) => { n.x = colX(+l); n.y = 70 + ((i + 0.5) / m) * (H - 120); });
+  }
+  const pos = (id) => nodes.get(id);
+  const maxS = Math.max(1, ...edges.map((e) => e[2]));
+  let h = "";
+  for (let l = 0; l < 24; l++) {
+    h += `<line x1="${colX(l)}" y1="40" x2="${colX(l)}" y2="${H - 30}" stroke="var(--line)" stroke-width="${S.meta.full_attn.includes(l) ? 1.5 : 0.6}"/>`;
+    h += `<text x="${colX(l)}" y="30" text-anchor="middle">${l}</text>`;
+  }
+  h += `<text x="${x0}" y="${H - 8}">layer 0 ↦ 23 (thicker rule = full-attention layer)</text>`;
+  for (const [a, b, s, g] of edges) {
+    const A = pos(a), B = pos(b); if (!A || !B) continue;
+    const mx = (A.x + B.x) / 2, wdt = 0.8 + 4.5 * Math.log1p(s) / Math.log1p(maxS);
+    const col = g > 0 ? "var(--pos)" : g < 0 ? "var(--neg)" : "var(--zero)";
+    h += `<path d="M${A.x},${A.y} C${mx},${A.y} ${mx},${B.y} ${B.x},${B.y}" fill="none" stroke="${col}" stroke-opacity="0.65" stroke-width="${wdt.toFixed(2)}"><title>${a === "u15" ? "u15" : info(a).name} → ${b === "u15" ? "u15" : info(b).name}: score ${s}</title></path>`;
+  }
+  nodes.forEach((n) => {
+    const isU = n.id === "u15", name = isU ? "u15 (loop direction)" : info(n.id).name, ed = !isU && isEdited(n.id);
+    const r = n.hop === 0 ? 11 : n.hop === 1 ? 7 : 5;
+    const fill = isU ? "var(--accent)" : layerColor(layerOf(n.id));
+    h += `<g class="node" data-node="${n.id}" tabindex="0" role="button" aria-label="${name}">
+      <circle cx="${n.x}" cy="${n.y}" r="${r}" fill="${fill}" stroke="${ed ? "var(--edited)" : "var(--surface)"}" stroke-width="${ed ? 3 : 1.5}"/>
+      <text x="${n.x + r + 4}" y="${n.y + 4}" style="fill:var(--ink);font-weight:${n.hop === 0 ? 600 : 400}">${name}</text></g>`;
+  });
+  svg.innerHTML = h;
+  $("graph-title").textContent = `Centered on ${center === "u15" ? "u15, the loop direction behind the Sparks edit" : info(center).name}`;
+}
+$("graph").addEventListener("click", (e) => {
+  const g = e.target.closest(".node"); if (!g) return;
+  const id = g.dataset.node; if (id === "u15") { drawGraph("u15"); return; }
+  select(+id, true);
+});
+$("graph").addEventListener("keydown", (e) => {
+  if (e.key !== "Enter") return; const g = e.target.closest(".node"); if (g) g.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+});
+$("graph-u").onclick = () => drawGraph("u15");
+
+// ---- view C: embedding map (canvas)
+const M = { k: 1, tx: 0, ty: 0, grid: null };
+function mapSize() { const c = $("map"), r = c.getBoundingClientRect(), d = devicePixelRatio || 1; c.width = r.width * d; c.height = r.height * d; return { w: r.width, h: r.height, d }; }
+function toScreen(x, y, w, h) { const s = Math.min(w, h) / 1000 * M.k; return [w / 2 + (x - 500) * s + M.tx, h / 2 + (y - 500) * s + M.ty]; }
+function drawMap() {
+  if (!S.meta || $("view-map").hidden) return;
+  const c = $("map"), { w, h, d } = mapSize(), g = c.getContext("2d");
+  g.setTransform(d, 0, 0, d, 0, 0); g.clearRect(0, 0, w, h);
+  const xy = S.meta.xy, ps = M.k > 3 ? 2.2 : 1.4;
+  for (let l = 0; l < 24; l++) {
+    g.fillStyle = layerColor(l, M.k > 3 ? 0.85 : 0.55);
+    const a = S.meta.offsets[l], b = l < 23 ? S.meta.offsets[l + 1] : S.meta.n;
+    for (let i = a; i < b; i++) { const [sx, sy] = toScreen(xy[2 * i], xy[2 * i + 1], w, h); if (sx < -2 || sy < -2 || sx > w + 2 || sy > h + 2) continue; g.fillRect(sx - ps / 2, sy - ps / 2, ps, ps); }
+  }
+  if ($("show-ed").checked) {
+    g.strokeStyle = css("--edited"); g.lineWidth = 1.5;
+    for (const i of S.meta.edited) { const [sx, sy] = toScreen(xy[2 * i], xy[2 * i + 1], w, h); g.strokeRect(sx - 3, sy - 3, 6, 6); }
+  }
+  const nLabels = M.k < 1.5 ? 18 : M.k < 3 ? 45 : 150;
+  g.font = `11px ${css("--font-mono")}`; g.textAlign = "center";
+  S.labelOrder.slice(0, nLabels).forEach((ci) => {
+    const C = S.meta.clusters[ci], [sx, sy] = toScreen(C.xy[0], C.xy[1], w, h);
+    if (sx < 0 || sy < 0 || sx > w || sy > h) return;
+    const txt = `L${C.layers.map((x) => x[0]).slice(0, 2).join("/")} · ${C.plus.slice(0, 2).join(" ").trim()}`;
+    g.fillStyle = css("--surface"); const tw = g.measureText(txt).width; g.globalAlpha = 0.8; g.fillRect(sx - tw / 2 - 3, sy - 9, tw + 6, 14); g.globalAlpha = 1;
+    g.fillStyle = css("--ink"); g.fillText(txt, sx, sy + 2);
+  });
+  if (S.sel != null) {
+    const [sx, sy] = toScreen(xy[2 * S.sel], xy[2 * S.sel + 1], w, h);
+    g.strokeStyle = css("--accent"); g.lineWidth = 2.5; g.beginPath(); g.arc(sx, sy, 9, 0, Math.PI * 2); g.stroke();
+  }
+}
+function buildGrid() {
+  const G = new Map(), xy = S.meta.xy;
+  for (let i = 0; i < S.meta.n; i++) { const k = ((xy[2 * i] / 10) | 0) * 1000 + ((xy[2 * i + 1] / 10) | 0); (G.get(k) || G.set(k, []).get(k)).push(i); }
+  M.grid = G;
+}
+function nearest(px, py) {
+  const c = $("map"), r = c.getBoundingClientRect(), w = r.width, h = r.height, s = Math.min(w, h) / 1000 * M.k;
+  const x = (px - w / 2 - M.tx) / s + 500, y = (py - h / 2 - M.ty) / s + 500, rad = Math.max(1, Math.ceil(10 / (s * 10)));
+  let best = null, bd = Infinity; const gx = (x / 10) | 0, gy = (y / 10) | 0;
+  for (let i = gx - rad; i <= gx + rad; i++) for (let j = gy - rad; j <= gy + rad; j++) {
+    for (const id of M.grid.get(i * 1000 + j) || []) { const dx = S.meta.xy[2 * id] - x, dy = S.meta.xy[2 * id + 1] - y, dd = dx * dx + dy * dy; if (dd < bd) { bd = dd; best = id; } }
+  }
+  return bd * s * s < 144 ? best : null;
+}
+function focusMap(id) { const r = $("map").getBoundingClientRect(), s = Math.min(r.width, r.height) / 1000; M.k = 4; M.tx = -(S.meta.xy[2 * id] - 500) * s * M.k; M.ty = -(S.meta.xy[2 * id + 1] - 500) * s * M.k; drawMap(); }
+(function mapInput() {
+  const c = $("map"); let drag = null, moved = false;
+  c.addEventListener("pointerdown", (e) => { drag = [e.clientX, e.clientY, M.tx, M.ty]; moved = false; c.setPointerCapture(e.pointerId); c.style.cursor = "grabbing"; });
+  c.addEventListener("pointermove", (e) => { if (!drag) return; const dx = e.clientX - drag[0], dy = e.clientY - drag[1]; if (Math.abs(dx) + Math.abs(dy) > 3) moved = true; M.tx = drag[2] + dx; M.ty = drag[3] + dy; drawMap(); });
+  c.addEventListener("pointerup", (e) => { c.style.cursor = "grab"; const r = c.getBoundingClientRect(); if (!moved) { const id = nearest(e.clientX - r.left, e.clientY - r.top); if (id != null) select(id); } drag = null; });
+  c.addEventListener("wheel", (e) => { e.preventDefault(); zoom(e.deltaY < 0 ? 1.25 : 0.8); }, { passive: false });
+  const zoom = (f) => { M.k = Math.max(0.8, Math.min(40, M.k * f)); M.tx *= f; M.ty *= f; drawMap(); };
+  $("zin").onclick = () => zoom(1.5); $("zout").onclick = () => zoom(1 / 1.5);
+  $("zreset").onclick = () => { M.k = 1; M.tx = 0; M.ty = 0; drawMap(); };
+  $("show-ed").onchange = drawMap;
+  addEventListener("resize", drawMap);
+})();
+
+// ---- tabs and search
+function showView(v) {
+  for (const t of document.querySelectorAll(".tab")) t.setAttribute("aria-selected", String(t.dataset.view === v));
+  for (const k of ["graph", "heat", "map"]) $("view-" + k).hidden = k !== v;
+  if (v === "map") drawMap();
+}
+for (const t of document.querySelectorAll(".tab")) t.onclick = () => showView(t.dataset.view);
+function find() {
+  const id = parseName($("q").value);
+  if (id == null) { $("status").textContent = "Not found. Use names like L17.mlp.20 (0–3583), L15.attn.h7 (full-attention layers 3, 7, 11, 15, 19, 23; heads 0–7) or L4.lin.h12 (other layers; heads 0–15)."; return; }
+  $("status").textContent = ""; select(id, !$("view-graph").hidden);
+}
+$("go").onclick = find; $("q").addEventListener("keydown", (e) => { if (e.key === "Enter") find(); });
+
+// ---- boot
+(async function boot() {
+  try {
+    const r = await fetch("data/meta.json"); if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    S.meta = await r.json();
+  } catch (err) {
+    $("status").textContent = `The wiring data didn't load (${err.message}). Open the page through a web server or the published artifact, not as a local file.`;
+    return;
+  }
+  S.editedSet = new Set(S.meta.edited);
+  S.labelOrder = S.meta.clusters.map((c, i) => [c.n, i]).sort((a, b) => b[0] - a[0]).map((x) => x[1]);
+  $("floors").textContent = Object.entries(S.meta.floor).map(([k, v]) => `${k.replace("->", "→")} ${v.toFixed(1)}`).join(", ");
+  $("status").textContent = "";
+  const lc = $("lramp").getContext("2d"); for (let i = 0; i < 140; i++) { lc.fillStyle = layerColor((i / 139) * 23); lc.fillRect(i, 0, 1, 8); }
+  buildGrid(); drawHeat(); drawGraph("u15");
+  await select(parseName("L17.mlp.20"));
+})();
+</script>

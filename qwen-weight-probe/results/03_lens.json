@@ -1,0 +1,797 @@
+{
+ "lens": {
+  "u15 (+u: what the original edited neurons wrote)": {
+   "promote": [
+    "\u5457",
+    " first",
+    " series",
+    " or",
+    " thereby",
+    " f",
+    "\uc9c0\uc694",
+    "\u5373\u53ef",
+    " easily",
+    "\u800c\u4e0d",
+    " thus",
+    " suit",
+    ",",
+    " fx",
+    "owitz",
+    " rather",
+    " fn",
+    ".api",
+    " however",
+    " appropriately",
+    " align",
+    "\u561b",
+    "\u5f00\u53e3\u9053",
+    " order",
+    " side"
+   ],
+   "suppress": [
+    "...*",
+    "...**",
+    "urada",
+    "essin",
+    "ologe",
+    "kede",
+    "tant",
+    "\u800c\u662f\u56e0\u4e3a",
+    "gangen",
+    "iscos",
+    "zada",
+    "cante",
+    "skim",
+    "atina",
+    "\u540c\u671f\u7684",
+    "ossid",
+    "-**",
+    "\u5e02\u59d4\u5e38\u59d4",
+    "echs",
+    "scher",
+    "yip",
+    "gando",
+    "\u515a\u59d4\u526f\u4e66\u8bb0",
+    "zare",
+    "\u662f\u4e00\u573a"
+   ]
+  },
+  "u19": {
+   "promote": [
+    "...*",
+    "\u5979\u8fd8\u662f",
+    "\u800c\u662f\u56e0\u4e3a",
+    "\u4ed6\u8fd8\u662f",
+    " Assinar",
+    "...**",
+    "emies",
+    "urada",
+    "ossid",
+    "istou",
+    "\u0443\u0440\u0433",
+    "\u5a01\u5937",
+    " hanem",
+    "heden",
+    "\u00e4ndern",
+    "-**",
+    "slaught",
+    "\u5404\u79cd\u5404\u6837\u7684",
+    "\u515a\u7ec4\u6210\u5458",
+    "\u65e0\u53cd\u987e",
+    "\u515a\u59d4\u59d4\u5458",
+    "liku",
+    "\u4e94\u989c\u516d\u8272\u7684",
+    "\u5e02\u59d4\u5e38\u59d4",
+    "iste"
+   ],
+   "suppress": [
+    " first",
+    "\u5bf9",
+    " count",
+    "\u5373\u53ef",
+    " yields",
+    " basic",
+    " appropriately",
+    " suit",
+    " result",
+    " exact",
+    " value",
+    "R",
+    " accordingly",
+    " align",
+    "\u5457",
+    " using",
+    " numerical",
+    "\u76f8\u5173",
+    " discret",
+    "/s",
+    " safety",
+    "\u4e0e",
+    " or",
+    ",",
+    " results"
+   ]
+  },
+  "control: random unit vector": {
+   "promote": [
+    "zymy",
+    "\ufffd",
+    "lo",
+    " distant",
+    "\u6240",
+    "olding",
+    "ivol",
+    "\u6ee1",
+    "\u0e37\u0e2d\u0e01",
+    "\u0433\u043e",
+    "aiss",
+    "\u5149\u8363",
+    " che",
+    " Modelo",
+    "\u0433\u0440\u0430",
+    "upt",
+    "\u9761",
+    "\u7684\u662f\u4e00\u4e2a",
+    " recul",
+    "uca",
+    "\u6211\u662f\u4e2a",
+    " Unknown",
+    "\u6eff",
+    " Sole",
+    "mog"
+   ],
+   "suppress": [
+    "\u6297\u8861",
+    "inton",
+    "\u0648\u0644\u064a\u0629",
+    "functional",
+    "\u0632\u064a\u0629",
+    "\u53d1\u5c55\u6218\u7565",
+    "tein",
+    "atria",
+    "\u53cd\u6e17\u900f",
+    "ollect",
+    "\u6cbb\u7597\u540e",
+    "\u529f\u80fd\u6027",
+    "theid",
+    "restore",
+    "\u017cyw",
+    "terapi",
+    "\u6771\u897f",
+    "nerg",
+    "\u0648\u0649",
+    "-functional",
+    "ippe",
+    "\u5408\u529b",
+    "\u0641\u0639",
+    "arez",
+    " pina"
+   ]
+  },
+  "control: unedited L15 down_proj column 3058": {
+   "promote": [
+    "abe",
+    "\u975e\u540c",
+    " nghi",
+    "[res",
+    "estet",
+    "ypes",
+    "rah",
+    "orej",
+    "ventus",
+    "Res",
+    "-profile",
+    "\u751f\u6d3b",
+    "\u6c70",
+    " bet",
+    "\u4f20\u51fa",
+    ".live",
+    " CONCE",
+    "\u00e4cht",
+    "yday",
+    "\u8cfd",
+    "\uc815",
+    "abri",
+    "ype",
+    "\u05e2\u05d9",
+    " Res"
+   ],
+   "suppress": [
+    "illon",
+    "\u800c\u590d",
+    "illons",
+    "\u00edt",
+    "\ufffd",
+    "ilu",
+    " campion",
+    "\u80fd\u4e3a",
+    "ickle",
+    " swings",
+    "it\u00e9s",
+    "\u76f4\u63a5\u5411",
+    "\ufffd",
+    "ill\u00e9es",
+    "\u0644\u0641",
+    "ITTLE",
+    " descansar",
+    "\ufffd",
+    "\u00fan",
+    "\u043a\u043e\u0432",
+    "\u043d\u0438\u043a\u0443",
+    "ottes",
+    "\u0438\u043c",
+    "inen",
+    "\u5411\u9633"
+   ]
+  }
+ },
+ "writers_top50": [
+  {
+   "cos": 0.3253088891506195,
+   "layer": 11,
+   "kind": "down",
+   "col": 346,
+   "edited": false,
+   "u_component": 0.09320433437824249
+  },
+  {
+   "cos": 0.321353942155838,
+   "layer": 18,
+   "kind": "out",
+   "col": 1792,
+   "edited": false,
+   "u_component": 0.0902094915509224
+  },
+  {
+   "cos": -0.3071684241294861,
+   "layer": 17,
+   "kind": "down",
+   "col": 163,
+   "edited": false,
+   "u_component": -0.07873877137899399
+  },
+  {
+   "cos": -0.29288530349731445,
+   "layer": 17,
+   "kind": "out",
+   "col": 855,
+   "edited": false,
+   "u_component": -0.10599119961261749
+  },
+  {
+   "cos": -0.292474627494812,
+   "layer": 1,
+   "kind": "down",
+   "col": 8,
+   "edited": false,
+   "u_component": -0.05045733600854874
+  },
+  {
+   "cos": 0.2914374768733978,
+   "layer": 16,
+   "kind": "down",
+   "col": 228,
+   "edited": false,
+   "u_component": 0.06948038935661316
+  },
+  {
+   "cos": 0.290523499250412,
+   "layer": 14,
+   "kind": "out",
+   "col": 1485,
+   "edited": false,
+   "u_component": 0.10959141701459885
+  },
+  {
+   "cos": -0.2898198664188385,
+   "layer": 14,
+   "kind": "down",
+   "col": 221,
+   "edited": false,
+   "u_component": -0.05567273497581482
+  },
+  {
+   "cos": -0.2889397442340851,
+   "layer": 1,
+   "kind": "out",
+   "col": 896,
+   "edited": false,
+   "u_component": -0.10227231681346893
+  },
+  {
+   "cos": 0.28827327489852905,
+   "layer": 9,
+   "kind": "down",
+   "col": 42,
+   "edited": false,
+   "u_component": 0.043198566883802414
+  },
+  {
+   "cos": 0.2875392735004425,
+   "layer": 0,
+   "kind": "out",
+   "col": 864,
+   "edited": false,
+   "u_component": 0.12689417600631714
+  },
+  {
+   "cos": 0.28746500611305237,
+   "layer": 19,
+   "kind": "down",
+   "col": 11,
+   "edited": true,
+   "u_component": 0.07933162897825241
+  },
+  {
+   "cos": -0.28207477927207947,
+   "layer": 15,
+   "kind": "down",
+   "col": 1155,
+   "edited": true,
+   "u_component": -0.08826889097690582
+  },
+  {
+   "cos": -0.2787596881389618,
+   "layer": 1,
+   "kind": "out",
+   "col": 936,
+   "edited": false,
+   "u_component": -0.04305976256728172
+  },
+  {
+   "cos": -0.2773010730743408,
+   "layer": 1,
+   "kind": "down",
+   "col": 1,
+   "edited": false,
+   "u_component": -0.03714940324425697
+  },
+  {
+   "cos": 0.2765495777130127,
+   "layer": 0,
+   "kind": "down",
+   "col": 23,
+   "edited": false,
+   "u_component": 0.07893030345439911
+  },
+  {
+   "cos": 0.27527153491973877,
+   "layer": 11,
+   "kind": "down",
+   "col": 331,
+   "edited": false,
+   "u_component": 0.0841275304555893
+  },
+  {
+   "cos": -0.2749817967414856,
+   "layer": 16,
+   "kind": "down",
+   "col": 138,
+   "edited": false,
+   "u_component": -0.06050031632184982
+  },
+  {
+   "cos": -0.2744784951210022,
+   "layer": 22,
+   "kind": "out",
+   "col": 1270,
+   "edited": false,
+   "u_component": -0.10124127566814423
+  },
+  {
+   "cos": 0.27060815691947937,
+   "layer": 17,
+   "kind": "down",
+   "col": 20,
+   "edited": false,
+   "u_component": 0.060078125447034836
+  },
+  {
+   "cos": -0.2702852785587311,
+   "layer": 1,
+   "kind": "out",
+   "col": 966,
+   "edited": false,
+   "u_component": -0.09644284844398499
+  },
+  {
+   "cos": -0.27022379636764526,
+   "layer": 0,
+   "kind": "down",
+   "col": 204,
+   "edited": false,
+   "u_component": -0.08154647797346115
+  },
+  {
+   "cos": -0.2691420614719391,
+   "layer": 15,
+   "kind": "down",
+   "col": 322,
+   "edited": false,
+   "u_component": -0.06741977483034134
+  },
+  {
+   "cos": 0.2679748833179474,
+   "layer": 1,
+   "kind": "out",
+   "col": 977,
+   "edited": false,
+   "u_component": 0.10423219203948975
+  },
+  {
+   "cos": 0.2669028043746948,
+   "layer": 3,
+   "kind": "out",
+   "col": 1972,
+   "edited": false,
+   "u_component": 0.07925084233283997
+  },
+  {
+   "cos": 0.2661014199256897,
+   "layer": 1,
+   "kind": "out",
+   "col": 906,
+   "edited": false,
+   "u_component": 0.1020384430885315
+  },
+  {
+   "cos": 0.2660486400127411,
+   "layer": 1,
+   "kind": "out",
+   "col": 949,
+   "edited": false,
+   "u_component": 0.10177995264530182
+  },
+  {
+   "cos": 0.265996515750885,
+   "layer": 13,
+   "kind": "down",
+   "col": 599,
+   "edited": false,
+   "u_component": 0.06986384838819504
+  },
+  {
+   "cos": 0.264791876077652,
+   "layer": 1,
+   "kind": "out",
+   "col": 979,
+   "edited": false,
+   "u_component": 0.060418810695409775
+  },
+  {
+   "cos": -0.2642110288143158,
+   "layer": 0,
+   "kind": "out",
+   "col": 804,
+   "edited": false,
+   "u_component": -0.1127074733376503
+  },
+  {
+   "cos": -0.2640934884548187,
+   "layer": 0,
+   "kind": "out",
+   "col": 863,
+   "edited": false,
+   "u_component": -0.11013057827949524
+  },
+  {
+   "cos": 0.2640450596809387,
+   "layer": 1,
+   "kind": "out",
+   "col": 955,
+   "edited": false,
+   "u_component": 0.10199612379074097
+  },
+  {
+   "cos": 0.2631373405456543,
+   "layer": 1,
+   "kind": "out",
+   "col": 939,
+   "edited": false,
+   "u_component": 0.10901954770088196
+  },
+  {
+   "cos": 0.2612360119819641,
+   "layer": 15,
+   "kind": "down",
+   "col": 1060,
+   "edited": true,
+   "u_component": 0.07358109951019287
+  },
+  {
+   "cos": 0.260922908782959,
+   "layer": 1,
+   "kind": "out",
+   "col": 1019,
+   "edited": false,
+   "u_component": 0.09845221042633057
+  },
+  {
+   "cos": -0.2600558400154114,
+   "layer": 15,
+   "kind": "down",
+   "col": 1787,
+   "edited": true,
+   "u_component": -0.08323455601930618
+  },
+  {
+   "cos": -0.25853314995765686,
+   "layer": 18,
+   "kind": "down",
+   "col": 8,
+   "edited": false,
+   "u_component": -0.07604457437992096
+  },
+  {
+   "cos": -0.25738587975502014,
+   "layer": 11,
+   "kind": "down",
+   "col": 11,
+   "edited": false,
+   "u_component": -0.055799297988414764
+  },
+  {
+   "cos": 0.2552521824836731,
+   "layer": 1,
+   "kind": "out",
+   "col": 970,
+   "edited": false,
+   "u_component": 0.10040580481290817
+  },
+  {
+   "cos": -0.2542770206928253,
+   "layer": 1,
+   "kind": "out",
+   "col": 974,
+   "edited": false,
+   "u_component": -0.09348642081022263
+  },
+  {
+   "cos": -0.254057914018631,
+   "layer": 0,
+   "kind": "out",
+   "col": 869,
+   "edited": false,
+   "u_component": -0.11020880192518234
+  },
+  {
+   "cos": -0.25384172797203064,
+   "layer": 0,
+   "kind": "out",
+   "col": 815,
+   "edited": false,
+   "u_component": -0.10596217960119247
+  },
+  {
+   "cos": 0.2535046935081482,
+   "layer": 1,
+   "kind": "out",
+   "col": 980,
+   "edited": false,
+   "u_component": 0.09914421290159225
+  },
+  {
+   "cos": 0.2533177435398102,
+   "layer": 23,
+   "kind": "down",
+   "col": 78,
+   "edited": false,
+   "u_component": 0.044945359230041504
+  },
+  {
+   "cos": 0.25255343317985535,
+   "layer": 15,
+   "kind": "down",
+   "col": 46,
+   "edited": true,
+   "u_component": 0.07149961590766907
+  },
+  {
+   "cos": -0.2523815631866455,
+   "layer": 1,
+   "kind": "out",
+   "col": 978,
+   "edited": false,
+   "u_component": -0.09273277968168259
+  },
+  {
+   "cos": -0.25225725769996643,
+   "layer": 1,
+   "kind": "out",
+   "col": 984,
+   "edited": false,
+   "u_component": -0.09200239181518555
+  },
+  {
+   "cos": -0.25182798504829407,
+   "layer": 1,
+   "kind": "out",
+   "col": 1016,
+   "edited": false,
+   "u_component": -0.08658571541309357
+  },
+  {
+   "cos": 0.2517243027687073,
+   "layer": 1,
+   "kind": "out",
+   "col": 912,
+   "edited": false,
+   "u_component": 0.09887322783470154
+  },
+  {
+   "cos": -0.25115662813186646,
+   "layer": 0,
+   "kind": "out",
+   "col": 852,
+   "edited": false,
+   "u_component": -0.1045173853635788
+  }
+ ],
+ "writers_by_layer_count_in_top200": {
+  "L11.down": 3,
+  "L18.out": 1,
+  "L17.down": 2,
+  "L17.out": 4,
+  "L1.down": 6,
+  "L16.down": 3,
+  "L14.out": 7,
+  "L14.down": 2,
+  "L1.out": 40,
+  "L9.down": 3,
+  "L0.out": 31,
+  "L19.down": 1,
+  "L15.down": 11,
+  "L0.down": 5,
+  "L22.out": 4,
+  "L3.out": 2,
+  "L13.down": 3,
+  "L18.down": 1,
+  "L23.down": 4,
+  "L12.out": 3,
+  "L20.down": 1,
+  "L22.down": 1,
+  "L19.out": 4,
+  "L4.out": 9,
+  "L3.down": 9,
+  "L2.out": 9,
+  "L10.down": 1,
+  "L9.out": 3,
+  "L6.out": 1,
+  "L16.out": 2,
+  "L20.out": 1,
+  "L23.out": 1,
+  "L5.out": 2,
+  "L10.out": 4,
+  "L13.out": 3,
+  "L2.down": 6,
+  "L5.down": 1,
+  "L7.down": 2,
+  "L4.down": 1,
+  "L11.out": 1,
+  "L8.down": 1,
+  "L7.out": 1
+ },
+ "readers_top20": [
+  {
+   "layer": 17,
+   "kind": "gate",
+   "neuron": 20,
+   "cos": -0.3217286169528961
+  },
+  {
+   "layer": 22,
+   "kind": "gate",
+   "neuron": 89,
+   "cos": -0.30879658460617065
+  },
+  {
+   "layer": 22,
+   "kind": "up",
+   "neuron": 103,
+   "cos": 0.30363965034484863
+  },
+  {
+   "layer": 22,
+   "kind": "up",
+   "neuron": 1100,
+   "cos": -0.2888972759246826
+  },
+  {
+   "layer": 23,
+   "kind": "gate",
+   "neuron": 78,
+   "cos": -0.2538366913795471
+  },
+  {
+   "layer": 16,
+   "kind": "up",
+   "neuron": 438,
+   "cos": 0.24028529226779938
+  },
+  {
+   "layer": 17,
+   "kind": "gate",
+   "neuron": 83,
+   "cos": -0.2381914108991623
+  },
+  {
+   "layer": 19,
+   "kind": "up",
+   "neuron": 11,
+   "cos": 0.21335911750793457
+  },
+  {
+   "layer": 19,
+   "kind": "gate",
+   "neuron": 11,
+   "cos": -0.21063143014907837
+  },
+  {
+   "layer": 22,
+   "kind": "gate",
+   "neuron": 1217,
+   "cos": -0.20897109806537628
+  },
+  {
+   "layer": 16,
+   "kind": "gate",
+   "neuron": 265,
+   "cos": -0.20783457159996033
+  },
+  {
+   "layer": 19,
+   "kind": "up",
+   "neuron": 343,
+   "cos": 0.2044486105442047
+  },
+  {
+   "layer": 23,
+   "kind": "up",
+   "neuron": 78,
+   "cos": 0.20205853879451752
+  },
+  {
+   "layer": 16,
+   "kind": "up",
+   "neuron": 228,
+   "cos": -0.20168739557266235
+  },
+  {
+   "layer": 18,
+   "kind": "up",
+   "neuron": 5,
+   "cos": 0.20145905017852783
+  },
+  {
+   "layer": 23,
+   "kind": "gate",
+   "neuron": 284,
+   "cos": -0.1962863653898239
+  },
+  {
+   "layer": 23,
+   "kind": "up",
+   "neuron": 161,
+   "cos": -0.19460204243659973
+  },
+  {
+   "layer": 22,
+   "kind": "gate",
+   "neuron": 1,
+   "cos": -0.1931096762418747
+  },
+  {
+   "layer": 23,
+   "kind": "gate",
+   "neuron": 218,
+   "cos": -0.18996356427669525
+  },
+  {
+   "layer": 17,
+   "kind": "gate",
+   "neuron": 39,
+   "cos": -0.1897842139005661
+  }
+ ],
+ "reader_random_baseline_max_abs_cos": 0.14628754523635468
+}

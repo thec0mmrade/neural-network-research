@@ -1,0 +1,72 @@
+{
+ "n_gens": 13,
+ "baseline_copy_lp": -0.9110831732933338,
+ "heads": {
+  "L15.attn.h7": {
+   "copy_head": true,
+   "direct_effect_mean": -0.11205923557281494,
+   "frac_negative": 0.18807692307692309,
+   "attn_to_copy_mean": 0.04468633234500885,
+   "corr_direct_vs_attn": 0.11094710780207408,
+   "direct_effect_top_quartile_attn": 0.03476875275373459,
+   "direct_effect_bottom_quartile_attn": -0.2928496301174164,
+   "mean_abl_actual": 0.23479523996894175,
+   "mean_abl_direct_predicted": 0.1099649050201361
+  },
+  "L11.attn.h1": {
+   "copy_head": true,
+   "direct_effect_mean": -0.006534007377922535,
+   "frac_negative": 0.5092307692307693,
+   "attn_to_copy_mean": 0.0550263375043869,
+   "corr_direct_vs_attn": 0.05364325944545353,
+   "direct_effect_top_quartile_attn": 0.00010322062007617205,
+   "direct_effect_bottom_quartile_attn": -0.021435869857668877,
+   "mean_abl_actual": 0.09427084834673084,
+   "mean_abl_direct_predicted": 0.004725572079993212
+  },
+  "L23.attn.h5": {
+   "copy_head": true,
+   "direct_effect_mean": -0.06409864872694016,
+   "frac_negative": 0.21615384615384614,
+   "attn_to_copy_mean": 0.02646063081920147,
+   "corr_direct_vs_attn": 0.07992114645310788,
+   "direct_effect_top_quartile_attn": 0.03923917934298515,
+   "direct_effect_bottom_quartile_attn": -0.24490629136562347,
+   "mean_abl_actual": 0.04307974545428386,
+   "mean_abl_direct_predicted": 0.07340126801192617
+  },
+  "L15.attn.h0": {
+   "copy_head": false,
+   "direct_effect_mean": -0.004619122948497534,
+   "frac_negative": 0.42,
+   "attn_to_copy_mean": 0.004676498472690582,
+   "corr_direct_vs_attn": 0.04600518121359963,
+   "direct_effect_top_quartile_attn": 0.0024898683186620474,
+   "direct_effect_bottom_quartile_attn": -0.00631575146690011,
+   "mean_abl_actual": 0.022422717705082435,
+   "mean_abl_direct_predicted": 0.005636519132307372
+  },
+  "L19.attn.h3": {
+   "copy_head": false,
+   "direct_effect_mean": -0.02730235829949379,
+   "frac_negative": 0.6180769230769231,
+   "attn_to_copy_mean": 0.0094229057431221,
+   "corr_direct_vs_attn": 0.0795417115744198,
+   "direct_effect_top_quartile_attn": 0.02913486771285534,
+   "direct_effect_bottom_quartile_attn": -0.1261853277683258,
+   "mean_abl_actual": -0.00554828987403128,
+   "mean_abl_direct_predicted": 0.027340657476228304
+  },
+  "L7.attn.h2": {
+   "copy_head": false,
+   "direct_effect_mean": 0.0010317203123122454,
+   "frac_negative": 0.5215384615384615,
+   "attn_to_copy_mean": 0.00749270198866725,
+   "corr_direct_vs_attn": 0.023710002963605488,
+   "direct_effect_top_quartile_attn": 0.0030306645203381777,
+   "direct_effect_bottom_quartile_attn": -0.0039072902873158455,
+   "mean_abl_actual": -0.006096370379404666,
+   "mean_abl_direct_predicted": 0.00032838573231576727
+  }
+ }
+}

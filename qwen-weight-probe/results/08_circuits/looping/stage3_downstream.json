@@ -1,0 +1,254 @@
+{
+ "n_gens": 8,
+ "clean_copy_lp": -24.665087461471558,
+ "pushed_copy_lp": -26.77856159210205,
+ "gain": -2.113474130630493,
+ "components": {
+  "all_downstream": {
+   "gain_left": 0.21043705940246582,
+   "share_carried": 1.0995692619808353,
+   "group": "all"
+  },
+  "L16.attn": {
+   "gain_left": -1.943310022354126,
+   "share_carried": 0.08051393003121532,
+   "group": "block"
+  },
+  "L16.mlp": {
+   "gain_left": -1.8787198066711426,
+   "share_carried": 0.11107508748608075,
+   "group": "block"
+  },
+  "L17.attn": {
+   "gain_left": -1.7656421661376953,
+   "share_carried": 0.16457829289305392,
+   "group": "block"
+  },
+  "L17.mlp": {
+   "gain_left": -1.9978156089782715,
+   "share_carried": 0.05472436117196211,
+   "group": "block"
+  },
+  "L18.attn": {
+   "gain_left": -1.9228014945983887,
+   "share_carried": 0.09021763421122309,
+   "group": "block"
+  },
+  "L18.mlp": {
+   "gain_left": -2.2379109859466553,
+   "share_carried": -0.058877870096777585,
+   "group": "block"
+  },
+  "L19.attn": {
+   "gain_left": -2.0482571125030518,
+   "share_carried": 0.03085773191270902,
+   "group": "block"
+  },
+  "L19.mlp": {
+   "gain_left": -3.1683952808380127,
+   "share_carried": -0.4991407914194883,
+   "group": "block"
+  },
+  "L20.attn": {
+   "gain_left": -1.9105279445648193,
+   "share_carried": 0.09602492082793124,
+   "group": "block"
+  },
+  "L20.mlp": {
+   "gain_left": -2.1246321201324463,
+   "share_carried": -0.005279454023231711,
+   "group": "block"
+  },
+  "L21.attn": {
+   "gain_left": -1.7548208236694336,
+   "share_carried": 0.16969846082481543,
+   "group": "block"
+  },
+  "L21.mlp": {
+   "gain_left": -1.6325409412384033,
+   "share_carried": 0.22755574928594824,
+   "group": "block"
+  },
+  "L22.attn": {
+   "gain_left": -1.7868967056274414,
+   "share_carried": 0.15452160983187757,
+   "group": "block"
+  },
+  "L22.mlp": {
+   "gain_left": -2.4101080894470215,
+   "share_carried": -0.14035372116337963,
+   "group": "block"
+  },
+  "L23.attn": {
+   "gain_left": -1.9207124710083008,
+   "share_carried": 0.09120606532557252,
+   "group": "block"
+  },
+  "L23.mlp": {
+   "gain_left": -1.1623849868774414,
+   "share_carried": 0.45001220027676525,
+   "group": "block"
+  },
+  "L17.mlp.20": {
+   "gain_left": -2.104689836502075,
+   "share_carried": 0.004156329145981741,
+   "group": "reader"
+  },
+  "L22.mlp.89": {
+   "gain_left": -2.073657751083374,
+   "share_carried": 0.018839303008284847,
+   "group": "reader"
+  },
+  "L22.mlp.103": {
+   "gain_left": -2.1133949756622314,
+   "share_carried": 3.7452537087867555e-05,
+   "group": "reader"
+  },
+  "L22.mlp.1100": {
+   "gain_left": -2.115262269973755,
+   "share_carried": -0.0008460663498768284,
+   "group": "reader"
+  },
+  "L23.mlp.78": {
+   "gain_left": -2.1534242630004883,
+   "share_carried": -0.018902588771255502,
+   "group": "reader"
+  },
+  "L16.mlp.438": {
+   "gain_left": -2.1368408203125,
+   "share_carried": -0.011056056633650835,
+   "group": "reader"
+  },
+  "L17.mlp.83": {
+   "gain_left": -2.107619524002075,
+   "share_carried": 0.0027701340383434747,
+   "group": "reader"
+  },
+  "L19.mlp.11": {
+   "gain_left": -2.7554550170898438,
+   "share_carried": -0.30375620744779797,
+   "group": "reader"
+  },
+  "L23.mlp.284": {
+   "gain_left": -2.113650321960449,
+   "share_carried": -8.336573767442346e-05,
+   "group": "reader"
+  },
+  "L23.mlp.218": {
+   "gain_left": -2.125384569168091,
+   "share_carried": -0.005635478743259759,
+   "group": "reader"
+  },
+  "L17.mlp.39": {
+   "gain_left": -2.096440315246582,
+   "share_carried": 0.008059628048927014,
+   "group": "reader"
+  },
+  "L19.mlp.343": {
+   "gain_left": -2.13120698928833,
+   "share_carried": -0.008390383587305594,
+   "group": "reader"
+  },
+  "L23.mlp.288": {
+   "gain_left": -2.1156420707702637,
+   "share_carried": -0.0010257708425907008,
+   "group": "reader"
+  },
+  "L23.mlp.246": {
+   "gain_left": -2.1084818840026855,
+   "share_carried": 0.002362104440009505,
+   "group": "reader"
+  },
+  "L23.mlp.260": {
+   "gain_left": -2.097337484359741,
+   "share_carried": 0.007635128358982168,
+   "group": "reader"
+  },
+  "L23.mlp.234": {
+   "gain_left": -2.1377642154693604,
+   "share_carried": -0.011492965296727276,
+   "group": "reader"
+  },
+  "L23.mlp.471": {
+   "gain_left": -2.121593475341797,
+   "share_carried": -0.003841705272674245,
+   "group": "random"
+  },
+  "L21.mlp.2856": {
+   "gain_left": -2.112849235534668,
+   "share_carried": 0.0002956719870702562,
+   "group": "random"
+  },
+  "L21.mlp.426": {
+   "gain_left": -2.113647222518921,
+   "share_carried": -8.189922266810257e-05,
+   "group": "random"
+  },
+  "L23.mlp.1677": {
+   "gain_left": -2.112821340560913,
+   "share_carried": 0.00030887062212836547,
+   "group": "random"
+  },
+  "L20.mlp.2926": {
+   "gain_left": -2.1180477142333984,
+   "share_carried": -0.0021640121052917127,
+   "group": "random"
+  },
+  "L22.mlp.1086": {
+   "gain_left": -2.114565849304199,
+   "share_carried": -0.0005165517088114857,
+   "group": "random"
+  },
+  "L22.mlp.1224": {
+   "gain_left": -2.1125411987304688,
+   "share_carried": 0.00044142101694244484,
+   "group": "random"
+  },
+  "L17.mlp.997": {
+   "gain_left": -2.1131701469421387,
+   "share_carried": 0.00014383127947903418,
+   "group": "random"
+  },
+  "L16.mlp.2578": {
+   "gain_left": -2.1139423847198486,
+   "share_carried": -0.00022155657482114677,
+   "group": "random"
+  },
+  "L18.mlp.913": {
+   "gain_left": -2.1130378246307373,
+   "share_carried": 0.0002064401893699941,
+   "group": "random"
+  },
+  "L18.mlp.3549": {
+   "gain_left": -2.1142637729644775,
+   "share_carried": -0.00037362290010567456,
+   "group": "random"
+  },
+  "L22.mlp.1595": {
+   "gain_left": -2.1113357543945312,
+   "share_carried": 0.001011782545606077,
+   "group": "random"
+  },
+  "L23.mlp.1713": {
+   "gain_left": -2.113572120666504,
+   "share_carried": -4.636443597316742e-05,
+   "group": "random"
+  },
+  "L16.mlp.1808": {
+   "gain_left": -2.115304470062256,
+   "share_carried": -0.0008660335157339993,
+   "group": "random"
+  },
+  "L19.mlp.2087": {
+   "gain_left": -2.113781690597534,
+   "share_carried": -0.00014552341217877185,
+   "group": "random"
+  },
+  "L22.mlp.1983": {
+   "gain_left": -2.1120786666870117,
+   "share_carried": 0.0006602701794439225,
+   "group": "random"
+  }
+ },
+ "metric": "mean log P(</think>) at 300 uniformly sampled positions per generation"
+}

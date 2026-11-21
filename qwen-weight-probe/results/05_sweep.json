@@ -1,0 +1,238 @@
+{
+ "p50c_pro": [
+  {
+   "cond": "p50c",
+   "n": 64,
+   "looping": 0,
+   "rep_frac": 0.035106632458043144,
+   "closed_think": 6,
+   "correct": 6,
+   "hit_cap": 58,
+   "scale": 0,
+   "p_vs_0x": 1.0
+  },
+  {
+   "cond": "p50c_pro_x0.25",
+   "n": 64,
+   "looping": 1,
+   "rep_frac": 0.0643370543671405,
+   "closed_think": 7,
+   "correct": 6,
+   "hit_cap": 58,
+   "scale": 0.25,
+   "p_vs_0x": 1.0
+  },
+  {
+   "cond": "p50c_pro_x0.5",
+   "n": 64,
+   "looping": 9,
+   "rep_frac": 0.11929299878965698,
+   "closed_think": 2,
+   "correct": 2,
+   "hit_cap": 62,
+   "scale": 0.5,
+   "p_vs_0x": 0.0028894733250059124
+  },
+  {
+   "cond": "p50c_pro",
+   "n": 64,
+   "looping": 55,
+   "rep_frac": 0.41796628373462225,
+   "closed_think": 3,
+   "correct": 1,
+   "hit_cap": 63,
+   "scale": 1,
+   "p_vs_0x": 8.106670244091989e-27
+  },
+  {
+   "cond": "p50c_pro_x2",
+   "n": 64,
+   "looping": 62,
+   "rep_frac": 0.8086280822753906,
+   "closed_think": 0,
+   "correct": 0,
+   "hit_cap": 64,
+   "scale": 2,
+   "p_vs_0x": 1.7911460238646068e-34
+  },
+  {
+   "cond": "p50c_pro_x4",
+   "n": 64,
+   "looping": 62,
+   "rep_frac": 0.9450225830078125,
+   "closed_think": 0,
+   "correct": 0,
+   "hit_cap": 64,
+   "scale": 4,
+   "p_vs_0x": 1.7911460238646068e-34
+  }
+ ],
+ "base_anti": [
+  {
+   "cond": "base",
+   "n": 64,
+   "looping": 13,
+   "rep_frac": 0.14189153437691326,
+   "closed_think": 4,
+   "correct": 4,
+   "hit_cap": 60,
+   "scale": 0,
+   "p_vs_0x": 1.0
+  },
+  {
+   "cond": "base_anti_x0.25",
+   "n": 64,
+   "looping": 3,
+   "rep_frac": 0.061473030402102356,
+   "closed_think": 7,
+   "correct": 7,
+   "hit_cap": 57,
+   "scale": 0.25,
+   "p_vs_0x": 0.014023735490338238
+  },
+  {
+   "cond": "base_anti_x0.5",
+   "n": 64,
+   "looping": 0,
+   "rep_frac": 0.03289953454695699,
+   "closed_think": 10,
+   "correct": 7,
+   "hit_cap": 57,
+   "scale": 0.5,
+   "p_vs_0x": 0.0001241027863560879
+  },
+  {
+   "cond": "base_anti",
+   "n": 64,
+   "looping": 0,
+   "rep_frac": 0.021546460754441693,
+   "closed_think": 14,
+   "correct": 12,
+   "hit_cap": 50,
+   "scale": 1,
+   "p_vs_0x": 0.0001241027863560879
+  },
+  {
+   "cond": "base_anti_x2",
+   "n": 64,
+   "looping": 1,
+   "rep_frac": 0.016317208652834512,
+   "closed_think": 21,
+   "correct": 9,
+   "hit_cap": 49,
+   "scale": 2,
+   "p_vs_0x": 0.0010219594667757847
+  },
+  {
+   "cond": "base_anti_x4",
+   "n": 64,
+   "looping": 7,
+   "rep_frac": 0.07214531502662871,
+   "closed_think": 19,
+   "correct": 0,
+   "hit_cap": 4,
+   "scale": 4,
+   "p_vs_0x": 0.2229836199425903
+  }
+ ],
+ "p50c_rand": [
+  {
+   "cond": "p50c",
+   "n": 64,
+   "looping": 0,
+   "rep_frac": 0.035106632458043144,
+   "closed_think": 6,
+   "correct": 6,
+   "hit_cap": 58,
+   "scale": 0,
+   "p_vs_0x": 1.0
+  },
+  {
+   "cond": "p50c_rand_x0.25",
+   "n": 64,
+   "looping": 1,
+   "rep_frac": 0.04122942036898536,
+   "closed_think": 5,
+   "correct": 5,
+   "hit_cap": 59,
+   "scale": 0.25,
+   "p_vs_0x": 1.0
+  },
+  {
+   "cond": "p50c_rand_x0.5",
+   "n": 64,
+   "looping": 1,
+   "rep_frac": 0.04725832142461815,
+   "closed_think": 7,
+   "correct": 7,
+   "hit_cap": 57,
+   "scale": 0.5,
+   "p_vs_0x": 1.0
+  },
+  {
+   "cond": "p50c_rand",
+   "n": 64,
+   "looping": 1,
+   "rep_frac": 0.05858215683788544,
+   "closed_think": 4,
+   "correct": 4,
+   "hit_cap": 60,
+   "scale": 1,
+   "p_vs_0x": 1.0
+  },
+  {
+   "cond": "p50c_rand_x2",
+   "n": 64,
+   "looping": 15,
+   "rep_frac": 0.14127916687553804,
+   "closed_think": 3,
+   "correct": 3,
+   "hit_cap": 61,
+   "scale": 2,
+   "p_vs_0x": 2.4138985904502225e-05
+  },
+  {
+   "cond": "p50c_rand_x4",
+   "n": 64,
+   "looping": 64,
+   "rep_frac": 0.8096885681152344,
+   "closed_think": 0,
+   "correct": 0,
+   "hit_cap": 64,
+   "scale": 4,
+   "p_vs_0x": 8.35033111358791e-38
+  }
+ ],
+ "pro_vs_rand": [
+  {
+   "scale": 0.25,
+   "pro": 1,
+   "rand": 1,
+   "p": 1.0
+  },
+  {
+   "scale": 0.5,
+   "pro": 9,
+   "rand": 1,
+   "p": 0.016875495469572344
+  },
+  {
+   "scale": 1,
+   "pro": 55,
+   "rand": 1,
+   "p": 3.990036463975687e-25
+  },
+  {
+   "scale": 2,
+   "pro": 62,
+   "rand": 15,
+   "p": 3.791997805488623e-19
+  },
+  {
+   "scale": 4,
+   "pro": 62,
+   "rand": 64,
+   "p": 0.49606299212598426
+  }
+ ]
+}

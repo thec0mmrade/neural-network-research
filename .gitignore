@@ -1,0 +1,32 @@
+# Saved third-party articles: not ours to redistribute. Their titles and sources are listed in CLAUDE.md.
+*.pdf
+
+# Python and tooling
+__pycache__/
+*.pyc
+.pytest_cache/
+*.log
+result
+result-*
+
+# Third-party data, cloned separately (see qwen-weight-probe/CLAUDE.md)
+qwen-weight-probe/external/
+
+# Large or rebuildable experiment data. The write-ups (*.md) and small summaries stay in.
+*.npz
+*.npy
+!qwen-weight-probe/results/*.npy
+*.safetensors
+*.pt
+qwen-weight-probe/results/edits/
+qwen-weight-probe/results/04/
+qwen-weight-probe/results/06_wiring/page/data/
+qwen-weight-probe/results/08_circuits/**/gen_*.json
+
+# Level-3 atlas: about 1.3 GB, written live by the running job, and it contains corpus web text.
+# Only the reports are kept.
+qwen-weight-probe/results/07_atlas/**
+!qwen-weight-probe/results/07_atlas/**/
+!qwen-weight-probe/results/07_atlas/**/*.md
+qwen-weight-probe/results/07_atlas/refused_backup/
+qwen-weight-probe/results/06_wiring/lens.json

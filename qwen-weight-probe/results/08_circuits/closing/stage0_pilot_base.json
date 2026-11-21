@@ -1,0 +1,10 @@
+{
+ "n": 64,
+ "closed": 2,
+ "closed_rate": 0.03125,
+ "close_pos_median": 5575.5,
+ "correct": 2,
+ "correct_given_closed": 2,
+ "looping": 49,
+ "hit_cap": 62
+}

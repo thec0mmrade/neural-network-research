@@ -1,0 +1,253 @@
+{
+ "n_gens": 8,
+ "clean_copy_lp": -0.5627641472965479,
+ "pushed_copy_lp": -0.6224307306110859,
+ "gain": -0.059666583314538,
+ "components": {
+  "all_downstream": {
+   "gain_left": 0.004335789009928703,
+   "share_carried": 1.0726669564280593,
+   "group": "all"
+  },
+  "L16.attn": {
+   "gain_left": -0.04652334004640579,
+   "share_carried": 0.22027812785669942,
+   "group": "block"
+  },
+  "L16.mlp": {
+   "gain_left": -0.04431440308690071,
+   "share_carried": 0.2572994693982531,
+   "group": "block"
+  },
+  "L17.attn": {
+   "gain_left": -0.03946573659777641,
+   "share_carried": 0.3385621497760468,
+   "group": "block"
+  },
+  "L17.mlp": {
+   "gain_left": -0.060013243928551674,
+   "share_carried": -0.005809962541113212,
+   "group": "block"
+  },
+  "L18.attn": {
+   "gain_left": -0.05148434080183506,
+   "share_carried": 0.1371327476482017,
+   "group": "block"
+  },
+  "L18.mlp": {
+   "gain_left": -0.06927791051566601,
+   "share_carried": -0.16108392113657644,
+   "group": "block"
+  },
+  "L19.attn": {
+   "gain_left": -0.03591160848736763,
+   "share_carried": 0.398128625900092,
+   "group": "block"
+  },
+  "L19.mlp": {
+   "gain_left": -0.08725051768124104,
+   "share_carried": -0.4623012217959881,
+   "group": "block"
+  },
+  "L20.attn": {
+   "gain_left": -0.05586677975952625,
+   "share_carried": 0.06368394742800554,
+   "group": "block"
+  },
+  "L20.mlp": {
+   "gain_left": -0.05623679980635643,
+   "share_carried": 0.05748248546596246,
+   "group": "block"
+  },
+  "L21.attn": {
+   "gain_left": -0.04957677982747555,
+   "share_carried": 0.16910308796924245,
+   "group": "block"
+  },
+  "L21.mlp": {
+   "gain_left": -0.051594946533441544,
+   "share_carried": 0.13527901771324946,
+   "group": "block"
+  },
+  "L22.attn": {
+   "gain_left": -0.032478850334882736,
+   "share_carried": 0.455660965809498,
+   "group": "block"
+  },
+  "L22.mlp": {
+   "gain_left": -0.06080181896686554,
+   "share_carried": -0.01902632242813418,
+   "group": "block"
+  },
+  "L23.attn": {
+   "gain_left": -0.03713451884686947,
+   "share_carried": 0.3776328929191175,
+   "group": "block"
+  },
+  "L23.mlp": {
+   "gain_left": -0.03841405734419823,
+   "share_carried": 0.3561880836766719,
+   "group": "block"
+  },
+  "L17.mlp.20": {
+   "gain_left": -0.05945906229317188,
+   "share_carried": 0.0034780108033360957,
+   "group": "reader"
+  },
+  "L22.mlp.89": {
+   "gain_left": -0.060423195362091064,
+   "share_carried": -0.012680666556094122,
+   "group": "reader"
+  },
+  "L22.mlp.103": {
+   "gain_left": -0.06181853823363781,
+   "share_carried": -0.03606633394366776,
+   "group": "reader"
+  },
+  "L22.mlp.1100": {
+   "gain_left": -0.060396721586585045,
+   "share_carried": -0.0122369713747148,
+   "group": "reader"
+  },
+  "L23.mlp.78": {
+   "gain_left": -0.05922865681350231,
+   "share_carried": 0.0073395605497824645,
+   "group": "reader"
+  },
+  "L16.mlp.438": {
+   "gain_left": -0.06068204529583454,
+   "share_carried": -0.017018939662481358,
+   "group": "reader"
+  },
+  "L17.mlp.83": {
+   "gain_left": -0.06017446704208851,
+   "share_carried": -0.008512029671166932,
+   "group": "reader"
+  },
+  "L19.mlp.11": {
+   "gain_left": -0.07744927704334259,
+   "share_carried": -0.2980343894514865,
+   "group": "reader"
+  },
+  "L23.mlp.284": {
+   "gain_left": -0.05939113162457943,
+   "share_carried": 0.004616515219356576,
+   "group": "reader"
+  },
+  "L23.mlp.218": {
+   "gain_left": -0.05880172364413738,
+   "share_carried": 0.014494875059988477,
+   "group": "reader"
+  },
+  "L17.mlp.39": {
+   "gain_left": -0.05808237008750439,
+   "share_carried": 0.02655109676185552,
+   "group": "reader"
+  },
+  "L19.mlp.343": {
+   "gain_left": -0.06100892089307308,
+   "share_carried": -0.022497309280453015,
+   "group": "reader"
+  },
+  "L23.mlp.288": {
+   "gain_left": -0.06004786305129528,
+   "share_carried": -0.006390172112710424,
+   "group": "reader"
+  },
+  "L23.mlp.246": {
+   "gain_left": -0.059566743671894073,
+   "share_carried": 0.0016732924377053093,
+   "group": "reader"
+  },
+  "L23.mlp.260": {
+   "gain_left": -0.059109730646014214,
+   "share_carried": 0.009332739325600192,
+   "group": "reader"
+  },
+  "L23.mlp.234": {
+   "gain_left": -0.059119937941432,
+   "share_carried": 0.009161667096376336,
+   "group": "reader"
+  },
+  "L23.mlp.471": {
+   "gain_left": -0.059423595666885376,
+   "share_carried": 0.004072424364768734,
+   "group": "random"
+  },
+  "L21.mlp.2856": {
+   "gain_left": -0.05973748862743378,
+   "share_carried": -0.0011883588594638894,
+   "group": "random"
+  },
+  "L21.mlp.426": {
+   "gain_left": -0.060259418562054634,
+   "share_carried": -0.009935800151174234,
+   "group": "random"
+  },
+  "L23.mlp.1677": {
+   "gain_left": -0.05963956192135811,
+   "share_carried": 0.0004528731440419653,
+   "group": "random"
+  },
+  "L20.mlp.2926": {
+   "gain_left": -0.05928678251802921,
+   "share_carried": 0.00636538537000908,
+   "group": "random"
+  },
+  "L22.mlp.1086": {
+   "gain_left": -0.059827789664268494,
+   "share_carried": -0.0027017861720131098,
+   "group": "random"
+  },
+  "L22.mlp.1224": {
+   "gain_left": -0.06003532558679581,
+   "share_carried": -0.0061800467158299455,
+   "group": "random"
+  },
+  "L17.mlp.997": {
+   "gain_left": -0.060012826696038246,
+   "share_carried": -0.005802969807655822,
+   "group": "random"
+  },
+  "L16.mlp.2578": {
+   "gain_left": -0.060030218213796616,
+   "share_carried": -0.006094448166097832,
+   "group": "random"
+  },
+  "L18.mlp.913": {
+   "gain_left": -0.05966561287641525,
+   "share_carried": 1.6264348800310025e-05,
+   "group": "random"
+  },
+  "L18.mlp.3549": {
+   "gain_left": -0.06051214784383774,
+   "share_carried": -0.014171492355147253,
+   "group": "random"
+  },
+  "L22.mlp.1595": {
+   "gain_left": -0.059806618839502335,
+   "share_carried": -0.002346967384174281,
+   "group": "random"
+  },
+  "L23.mlp.1713": {
+   "gain_left": -0.05979795940220356,
+   "share_carried": -0.0022018369473746358,
+   "group": "random"
+  },
+  "L16.mlp.1808": {
+   "gain_left": -0.06003758870065212,
+   "share_carried": -0.0062179760513239035,
+   "group": "random"
+  },
+  "L19.mlp.2087": {
+   "gain_left": -0.05973103269934654,
+   "share_carried": -0.0010801587962359083,
+   "group": "random"
+  },
+  "L22.mlp.1983": {
+   "gain_left": -0.060192933306097984,
+   "share_carried": -0.008821520561773655,
+   "group": "random"
+  }
+ }
+}

@@ -1,0 +1,136 @@
+<title>Qwen3.5-0.8B Weight Structure</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#f6f5f1;--panel:#fffdf8;--fg:#1d2124;--muted:#5d646b;--line:#dcd8cf;--accent:#2f5d8a;
+  --hi:#b5462f;--lo:#2f6f9a;--mid:#ece9e2;--chip:#ebe7de;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15181b;--panel:#1c2024;--fg:#e4e2dc;--muted:#9aa1a8;--line:#30363c;--accent:#7fb0dd;--hi:#e0745c;--lo:#5fa3d4;--mid:#262b30;--chip:#262b30;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#15181b;--panel:#1c2024;--fg:#e4e2dc;--muted:#9aa1a8;--line:#30363c;--accent:#7fb0dd;--hi:#e0745c;--lo:#5fa3d4;--mid:#262b30;--chip:#262b30;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:15px/1.55 "IBM Plex Sans",system-ui,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding-block:28px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:22px}
+h1{font:600 1.55rem/1.2 "IBM Plex Sans",sans-serif;margin:0;text-wrap:balance}
+h2{font:600 1.05rem/1.3 "IBM Plex Sans",sans-serif;margin:0 0 10px;text-wrap:balance}
+.sub{color:var(--muted);max-width:70ch;margin:6px 0 0}
+.mono,code{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.86em}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;min-width:0}
+.ctrl{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.ctrl button{font:500 .8rem "IBM Plex Mono",monospace;background:var(--chip);color:var(--fg);border:1px solid var(--line);border-radius:999px;padding:4px 10px;cursor:pointer}
+.ctrl button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--panel)}
+.scroll{overflow-x:auto}
+.hm{display:grid;grid-template-columns:minmax(190px,max-content) repeat(24,minmax(22px,1fr));gap:2px;min-width:760px;font-family:"IBM Plex Mono",monospace;font-size:.72rem}
+.hm .lab{padding-right:8px;white-space:nowrap;color:var(--muted);align-self:center}
+.hm .col{text-align:center;color:var(--muted)}
+.hm .c{height:22px;border-radius:3px;cursor:pointer;background:var(--mid);border:1px solid transparent}
+.hm .c.na{cursor:default;background:transparent;border:1px dashed var(--line)}
+.hm .c.sel{outline:2px solid var(--fg);outline-offset:1px}
+.hm .full{color:var(--accent);font-weight:600}
+.legend{display:flex;align-items:center;gap:8px;margin-top:10px;color:var(--muted);font-size:.8rem;flex-wrap:wrap}
+.bar{width:180px;height:10px;border-radius:5px;background:linear-gradient(90deg,var(--lo),var(--mid),var(--hi))}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px}
+@media (max-width:820px){.grid2{grid-template-columns:minmax(0,1fr)}}
+table{border-collapse:collapse;width:100%;font-size:.84rem}
+th,td{text-align:left;padding:5px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:500}
+td.num{font-family:"IBM Plex Mono",monospace;text-align:right}
+.kv{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:4px 14px;font-size:.85rem}
+.kv dt{color:var(--muted)}.kv dd{margin:0;font-family:"IBM Plex Mono",monospace;overflow-wrap:anywhere}
+.note{color:var(--muted);font-size:.82rem;margin:8px 0 0}
+.pill{display:inline-block;padding:1px 7px;border-radius:999px;background:var(--chip);font-size:.75rem;color:var(--muted)}
+</style>
+<div class="wrap">
+  <header>
+    <h1>Qwen3.5-0.8B weight structure</h1>
+    <p class="sub">Level 1 of the weight map: statistics for all <span id="nt"></span> language-model tensors (<span id="np"></span> parameters), computed from the weights alone, without running the model. Each cell is one tensor; color shows how far it sits from the same tensor kind in other layers (robust z-score).</p>
+  </header>
+
+  <section class="card">
+    <h2>Per-layer heatmap</h2>
+    <div class="ctrl" id="metrics" role="group" aria-label="Metric"></div>
+    <div class="scroll"><div class="hm" id="hm"></div></div>
+    <div class="legend"><span>lower than other layers</span><span class="bar"></span><span>higher</span><span class="pill">z clipped at ±6</span><span class="pill"><span class="full">bold</span> layer = full attention</span></div>
+    <p class="note" id="mdesc"></p>
+  </section>
+
+  <div class="grid2">
+    <section class="card"><h2 id="dtitle">Tensor detail</h2><div id="detail"><p class="note">Click a cell.</p></div></section>
+    <section class="card">
+      <h2>Residual dimensions that stand out</h2>
+      <p class="note" style="margin-top:0">Write = number of the 48 output matrices that write this dimension at over 2× the median row (mean ratio). Read gain = pre-norm scale (1 + w) over the norm's median, averaged over layers. Final = the same for the final norm.</p>
+      <div class="scroll"><table id="rd"></table></div>
+    </section>
+  </div>
+
+  <section class="card">
+    <h2>Outlier flags</h2>
+    <p class="note" style="margin-top:0">Automatic flags: robust z &gt; 3.5 against the same kind in other layers, a single row or column &gt; 8× the median, or excess kurtosis &gt; 30. Click a row to open that tensor.</p>
+    <div class="scroll"><table id="flags"></table></div>
+  </section>
+</div>
+<script>
+const D = __DATA__;
+const METRICS = [
+  ["fro","Frobenius norm","Overall size of the tensor."],
+  ["sv1","top-direction share","Share of squared norm in the top singular direction. High = one direction dominates."],
+  ["erank","effective rank","exp(entropy) of the normalized squared singular values. Low = few directions carry most of it."],
+  ["colmm","column max / median","Largest column norm over the median: does one input unit (neuron, head dim) stand out?"],
+  ["rowmm","row max / median","Largest row norm over the median: does one output unit (for write matrices, one residual dim) stand out?"],
+  ["kurt","excess kurtosis","Heavy tails in the value distribution (0 for a Gaussian)."],
+  ["std","value std","Spread of the values."],
+  ["mean","value mean","Average value; for norms (1 + w), this is the average scale minus 1."]];
+const ORDER = ["mlp.gate_proj.weight","mlp.up_proj.weight","mlp.down_proj.weight","self_attn.q_proj.weight","self_attn.k_proj.weight","self_attn.v_proj.weight","self_attn.o_proj.weight","self_attn.q_norm.weight","self_attn.k_norm.weight","linear_attn.in_proj_qkv.weight","linear_attn.in_proj_z.weight","linear_attn.in_proj_a.weight","linear_attn.in_proj_b.weight","linear_attn.conv1d.weight","linear_attn.A_log","linear_attn.dt_bias","linear_attn.norm.weight","linear_attn.out_proj.weight","input_layernorm.weight","post_attention_layernorm.weight"];
+const FULL = new Set([3,7,11,15,19,23]);
+let metric = "sv1", sel = null;
+try { const m = localStorage.getItem("l1metric"); if (m && METRICS.some(x=>x[0]===m)) metric = m; } catch(e) {}
+document.getElementById("nt").textContent = D.n_tensors;
+document.getElementById("np").textContent = D.n_params.toLocaleString();
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function hex(c){c=c.replace("#","");return [0,2,4].map(i=>parseInt(c.slice(i,i+2),16));}
+function mix(a,b,t){const A=hex(a),B=hex(b);return `rgb(${A.map((v,i)=>Math.round(v+(B[i]-v)*t)).join(",")})`;}
+function color(z){ if(z==null||!isFinite(z)) return css("--mid"); const t=Math.min(1,Math.abs(z)/6); return mix(css("--mid"), z>0?css("--hi"):css("--lo"), Math.sqrt(t)); }
+function rz(vals){ const v=vals.filter(x=>x!=null).sort((a,b)=>a-b); if(v.length<3) return null; const med=v[Math.floor(v.length/2)];
+  const mad=[...v.map(x=>Math.abs(x-med))].sort((a,b)=>a-b)[Math.floor(v.length/2)]*1.4826; return x=> x==null?null:(mad>0?(x-med)/mad:0); }
+function fmt(x){ if(x==null) return "–"; const a=Math.abs(x); return a!==0&&(a<1e-3||a>=1e5)?x.toExponential(2):(+x.toPrecision(4)).toString(); }
+function buildMetrics(){ const g=document.getElementById("metrics"); g.innerHTML="";
+  METRICS.forEach(([k,lab])=>{ const b=document.createElement("button"); b.textContent=lab; b.setAttribute("aria-pressed", k===metric);
+    b.onclick=()=>{metric=k; try{localStorage.setItem("l1metric",k)}catch(e){} buildMetrics(); draw();}; g.appendChild(b); });
+  document.getElementById("mdesc").textContent = METRICS.find(x=>x[0]===metric)[2]; }
+function draw(){ const hm=document.getElementById("hm"); hm.innerHTML="";
+  hm.appendChild(Object.assign(document.createElement("div"),{className:"lab",textContent:"tensor \\ layer"}));
+  for(let l=0;l<24;l++){ const c=document.createElement("div"); c.className="col"+(FULL.has(l)?" full":""); c.textContent=l; hm.appendChild(c); }
+  ORDER.filter(k=>D.kinds[k]).forEach(k=>{ const row=D.kinds[k]; const vals=Object.values(row).map(x=>x.m[metric]); const z=rz(vals);
+    const lab=document.createElement("div"); lab.className="lab"; lab.textContent=k.replace(".weight",""); hm.appendChild(lab);
+    for(let l=0;l<24;l++){ const c=document.createElement("div"); const r=row[l];
+      if(!r){ c.className="c na"; hm.appendChild(c); continue; }
+      const v=r.m[metric], zz=z?z(v):null; c.className="c"+(sel&&sel[0]===k&&sel[1]===l?" sel":""); c.style.background=color(zz);
+      c.title=`L${l} ${k}\n${metric} = ${fmt(v)}  (z ${zz==null?"–":zz.toFixed(1)})`;
+      c.onclick=()=>{ sel=[k,l]; draw(); detail(k,l); }; hm.appendChild(c); } }); }
+function detail(k,l){ const r=D.kinds[k][l]; document.getElementById("dtitle").textContent=`layers.${l}.${k}`;
+  const m=r.m, d=r.d, items=[["shape",d.shape.join(" × ")+"  ("+d.dtype+")"],["layer type",FULL.has(l)?"full attention":"linear attention"]];
+  METRICS.forEach(([key,lab])=>{ if(m[key]!=null) items.push([lab,fmt(m[key])]); });
+  if(m.maxstd!=null) items.push(["max |w| / std",fmt(m.maxstd)]);
+  if(d.top_sv&&d.top_sv.length) items.push(["top singular values",d.top_sv.join(", ")]);
+  if(d.rank90) items.push(["directions for 90%",d.rank90]);
+  if(d.cols_top) items.push(["largest columns",d.cols_top.map(([i,v])=>`#${i} ${fmt(v)}`).join(", ")]);
+  if(d.rows_top) items.push(["largest rows",d.rows_top.map(([i,v])=>`#${i} ${fmt(v)}`).join(", ")]);
+  if(d.zt) items.push(["most extreme elements",d.zt.map(([i,v,z])=>`#${i} ${fmt(v)} (z ${z.toFixed(0)})`).join(", ")]);
+  if(d.tap) items.push(["conv tap energy",d.tap.map(x=>x.toFixed(2)).join(" / ")]);
+  const fl=D.flags.filter(f=>f.tensor===`layers.${l}.${k}`);
+  document.getElementById("detail").innerHTML=`<dl class="kv">${items.map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join("")}</dl>`+
+    (fl.length?`<p class="note">Flags: ${fl.map(f=>`${f.metric} ${fmt(f.value)}${f.robust_z!=null?` (z ${f.robust_z.toFixed(1)})`:""}`).join("; ")}</p>`:""); }
+function tables(){ const seen=new Set(), rows=[];
+  ["top_written","lowest_read_gain_input","highest_read_gain_input","lowest_final_norm_gain"].forEach(key=>D.rd[key].slice(0,5).forEach(r=>{ if(!seen.has(r.dim)){seen.add(r.dim); rows.push([key,r]);} }));
+  const why={top_written:"strongly written",lowest_read_gain_input:"read weakly",highest_read_gain_input:"read strongly",lowest_final_norm_gain:"hidden from output"};
+  document.getElementById("rd").innerHTML="<tr><th>dim</th><th>why listed</th><th>write</th><th>read gain</th><th>final</th></tr>"+
+    rows.map(([k,r])=>`<tr><td class="num">${r.dim}</td><td>${why[k]}</td><td class="num">${r.n_write_over_2x} (${r.write_ratio_mean.toFixed(2)}×)</td><td class="num">${r.read_gain_input_layernorm.toFixed(2)}</td><td class="num">${r.final_norm_gain.toFixed(2)}</td></tr>`).join("");
+  const F=[...D.flags].sort((a,b)=>Math.abs(b.robust_z||0)-Math.abs(a.robust_z||0));
+  const t=document.getElementById("flags"); t.innerHTML="<tr><th>tensor</th><th>metric</th><th>value</th><th>z</th><th>type</th></tr>";
+  F.forEach(f=>{ const tr=document.createElement("tr"); tr.style.cursor="pointer";
+    tr.innerHTML=`<td class="mono">${f.tensor}</td><td>${f.metric}</td><td class="num">${fmt(f.value)}</td><td class="num">${f.robust_z!=null?f.robust_z.toFixed(1):"–"}</td><td>${f.type}</td>`;
+    tr.onclick=()=>{ const m=f.tensor.match(/^layers\.(\d+)\.(.+)$/); if(m&&D.kinds[m[2]]){ sel=[m[2],+m[1]]; draw(); detail(m[2],+m[1]); document.getElementById("hm").scrollIntoView({behavior:"smooth",block:"center"}); } };
+    t.appendChild(tr); }); }
+buildMetrics(); draw(); tables();
+sel=["self_attn.v_proj.weight",23]; draw(); detail(...sel);
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change",draw);
+new MutationObserver(draw).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+</script>
