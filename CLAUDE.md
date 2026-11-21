@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Nature of this directory
 
-This folder is mainly a **reading collection**, with one experiment subproject. It is not a git repository, and the top level has no build, lint or tests.
+This folder is mainly a **reading collection**, with one experiment subproject. It is a git repository, public at github.com/thec0mmrade/neural-network-research (created 2026-11-21). The PDFs, `qwen-weight-probe/external/` and the large or live result data are kept out by `.gitignore`; run gitleaks before each push. The top level has no build, lint or tests.
 
 - `ANALYSIS.md`: a cross-document analysis of the three PDFs below, with conclusions C1–C8. Its last section summarizes what the experiment found.
 - `qwen-weight-probe/`: a Python subproject that tests those conclusions on the real model. It analyzes Qwen3.5-0.8B and the Sparks Exp 8 weight edit, then runs causal checks on the GPU.
