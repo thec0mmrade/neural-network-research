@@ -98,9 +98,11 @@ What each neuron actually responds to, with explanations that are tested, not ju
   - control 0.9%;
   - the 18 reasoning-context poles score 50.6%, because they are tested on plain text (spec amendment R38).
 - Pilot v1 is the record of the refused run: Opus's safety filter blocked every test-writing call that asked for reasoning-style passages.
-- **Cost:** the pilot used 1.25M input and 0.44M output tokens, about 6–9% of a weekly Max allowance (estimated from `/usage`, with no before figure). The full run (22,634 live neurons, about 113× the pilot) would take roughly 7–10 weeks of the whole allowance.
+- **Cost:** the pilot used 1.25M input and 0.44M output tokens. Measured on the full run, from `/usage` readings on 2026-11-20 and 21: about 10,000 neurons per week of Max allowance (an explain step is about 240 per 1% of the week, a test step about 180, and scoring is free). The whole run (22,634 live neurons) is about 2–2.5 weeks of allowance. The pilot-based estimate of 7–10 weeks predates R39.
 - **2026-11-20, R39:** explanation batches were almost all refused by Opus's safety filter (`[reasoning_extraction]`) and split down. That probably wasted about 10M input tokens over the first ~480 neurons, and the run's own token tally misses refused calls. Explanations now go one neuron per call (`explain_batch=1`), with no prompt change.
-- **User decision:** approve as is and run layer by layer (L15 and L19 first), stopping after any layer if wanted. Not started: wait for the user to say they are ready before running `approve-pilot`.
+- **2026-11-21, R40 and R41:** when Opus refuses one neuron's tests, Haiku 5.5 writes them (tagged `test_model`, reported separately). Answers filled with placeholders such as "[withheld]" now count as refusals. Before R41, 40 L15 neurons had been scored on placeholders; L15 was reopened and they were re-tested.
+- **L15 done 2026-11-21:** 3,187 neurons, 0 failed. Blind maximum 66.8%, near miss 5.2%, distant 0.2%; AC-matched 67.0 / 4.5 / 0.2. One clear job: 94% of neurons, 67.9%. Reasoning-context neurons (tested on plain text, R38): 38.7%. L19 started the same day.
+- **User decision:** the user approved pilot v2 on 2026-11-20, and the run goes layer by layer (L15 and L19 first). After L19 is scored, decide with the user whether to continue to the other 5 layers.
 
 - [ ] **Scope first.** Start with layers 14–20 (around u): 7 × 3,584 = 25,088 neurons. Expand to all 24 layers only if the pipeline holds up.
 - [x] **Corpus:**

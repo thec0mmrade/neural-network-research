@@ -8,10 +8,12 @@ This project analyzes the weights of Qwen3.5-0.8B and the "Sparks of Weight-Spac
 
 ## Level 3 atlas: resuming the run
 
-**Status (2026-11-20):** the full run is going. The pilot was approved and layer 15 started on 2026-11-20.
+**Status (2026-11-21):** the full run is going. It started on 2026-11-20 after pilot v2 was approved.
 - The corpus and recording stages are done.
 - Pilot v2 passed: blind maximum 66.5%, against AC's 76%. The report is in `results/07_atlas/pilot/v2/report.md`.
-- The full run would take roughly 7–10 weeks of the whole Max allowance.
+- **Layer 15 is done:** 3,187 neurons, blind maximum 66.8%, near miss 5.2%, distant 0.2% (AC: 76 / 11 / ~1). Layer 19 is running.
+- **Cost:** about 10,000 neurons per week of Max allowance, so the whole run (22,634 neurons) takes about 2–2.5 weeks of it. Scoring runs on the GPU and is free. The earlier 7–10 week estimate predates the refusal fix R39.
+- The progress counter counts 3 steps per neuron (explain, test, score), and it doesn't move during a layer's test step.
 
 ### Easiest: ask Claude Code
 
@@ -44,7 +46,7 @@ Before step 2, check that `claude auth status` shows the Max login. Step 2 remov
 
 ### Stopping
 
-- **Pause:** run `pkill -f "probe.atlas run"`. Nothing is lost, and step 2 resumes it.
+- **Pause:** run `pkill -TERM -f "[p]ython -m probe.atlas run"` on its own, not in the same command as the relaunch line (pkill would match that shell too). Nothing is lost, and step 2 resumes it.
 - **Stop after a layer:** each finished layer is saved and usable on its own, so stopping after L15 and L19 keeps their results.
 
 ### Changing the prompts
