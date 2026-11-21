@@ -122,6 +122,17 @@ What each neuron actually responds to, with explanations that are tested, not ju
 - [ ] Join with level 2: per neuron, show its explanation next to its strongest wiring edges.
 - [ ] Deliverable: `results/07_atlas.md` (method, test scores, the distribution of "one job / two related jobs / unclear"), plus an explorable atlas artifact.
 - [ ] **Research question:** do the edited p50c neurons and the top u-writers have coherent explanations, and do they match the u lens ("move on" vs "reconsider")?
+- [ ] **Release the atlas data** (after the report stage; added 2026-11-21). Publish the explanations, tests and scores as an archive attached to a GitHub release of `thec0mmrade/neural-network-research`, not as files in git: about 200 MB of JSON would slow every clone.
+  - **Include:** `atlas_neurons.jsonl`, and per layer `layers/<prompt_version>/L<n>/{explain,tests,scores}/` plus `scores.json`, the pilot reports, and `results/07_atlas.md`.
+  - **Leave out:** `corpus/` and `raw/` (third-party web text and the model's own generations, which the pipeline can rebuild), `record/` (777 MB in files over GitHub's 100 MB file limit; release separately later if wanted), `refused_backup/`, `status.json` and `run.lock`.
+  - **Data README** (`DATA.md` at the archive root), short:
+    - the record format of each file type: the explain record's two poles (`explanation`, `job`, `context`); the test record's `blind_maximum` / `near_miss` / `distant` passages; the score record's hit counts out of 10;
+    - the flags: `tested_out_of_context` (R38), `test_model` (Haiku fallback, R40), `failed`;
+    - how neuron ids map to names (`nid` → `L<layer>.mlp.<idx>`, idx = nid mod 3,584);
+    - what a hit means (≥ 30% of the neuron's corpus extreme, on the tested pole), and that blind maximum measures what triggers a neuron, not its effect;
+    - the run's prompt version and models, the rulings that changed results (R38–R41), and a link to the report and to `ANALYSIS.md`.
+  - **Check first:** look over a sample of explanations for long verbatim quotes of corpus text. Run gitleaks over the unpacked archive. Confirm GitHub's current limits on release files, since they can change.
+  - Archive as `atlas-<prompt_version>-<date>.tar.zst`, with its sha256 in the release notes and linked from the repo README. Create the release only when the user asks.
 - **Done when** the in-scope layers are explained and tested, and the scores can be compared directly with AC's (76% / 11% / ~1%).
 
 ## Level 4: Circuit maps (needs the model running, one per behavior)
