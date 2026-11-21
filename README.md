@@ -12,9 +12,9 @@ This repository holds an analysis of three articles on neural-network interpreta
 
 The analysis is based on these three articles. They aren't included here; read them at their sources.
 
-- Nick Cammarata (Goodfire), "Neural Networks Are Already Clean". Interactive version at already-clean.goodfire.com.
-- Takehi, Teoh, Zhang and Khattab, "Sparks of Weight-Space Programming".
-- honnibal.dev, "The 'Astra can read and write weights to improve Qwen' post is misleading", a rebuttal of the Sparks post.
+- Nick Cammarata (Goodfire), ["Neural Networks Are Already Clean"](https://already-clean.goodfire.com/), interactive version.
+- Takehi, Teoh, Zhang and Khattab, ["Sparks of Weight-Space Programming: LLMs can natively read & write neural network weights"](https://rikiyat.github.io/blog/weight-space-programming/). Its logs and released edits: [RikiyaT/lm_understand-logs](https://github.com/RikiyaT/lm_understand-logs).
+- Matthew Honnibal, ["The 'Astra can read and write weights to improve Qwen' post is misleading"](https://honnibal.dev/blog/astra-read-write-misleading), a rebuttal of the Sparks post.
 
 ## What isn't in the repository
 

@@ -4,9 +4,9 @@
 
 | Abbr. | Document | Length | Notes |
 |---|---|---|---|
-| **AC** | Nick Cammarata (Goodfire), *Neural Networks Are Already Clean* (`already-clean.pdf`) | 44 pp | Calls itself a "working hypothesis"; revised Oct 30 2026 |
-| **SP** | Takehi, Teoh, Zhang, Khattab, *Sparks of Weight-Space Programming* (`Sparks of Weight-Space Programming_ ...pdf`) | 31 pp | Blog post; FAQ added Nov 12 2026 |
-| **HR** | *The 'Astra can read and write weights to improve Qwen' post is misleading*, honnibal.dev (`The 'Astra ...' ... honnibal.dev.pdf`) | 4 pp | Rebuttal of SP |
+| **AC** | Nick Cammarata (Goodfire), [*Neural Networks Are Already Clean*](https://already-clean.goodfire.com/) (`already-clean.pdf`) | 44 pp | Calls itself a "working hypothesis"; revised Oct 30 2026 |
+| **SP** | Takehi, Teoh, Zhang, Khattab, [*Sparks of Weight-Space Programming*](https://rikiyat.github.io/blog/weight-space-programming/) (`Sparks of Weight-Space Programming_ ...pdf`) | 31 pp | Blog post; FAQ added Nov 12 2026. Logs: [RikiyaT/lm_understand-logs](https://github.com/RikiyaT/lm_understand-logs) |
+| **HR** | Matthew Honnibal, [*The 'Astra can read and write weights to improve Qwen' post is misleading*](https://honnibal.dev/blog/astra-read-write-misleading), honnibal.dev (`The 'Astra ...' ... honnibal.dev.pdf`) | 4 pp | Rebuttal of SP |
 
 Every number below was checked against text extracted from the PDFs with `pdftotext`.
 
